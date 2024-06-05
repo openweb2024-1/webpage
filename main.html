@@ -190,11 +190,26 @@ $(function() {
                
                <!-- LNB Right -->
                <ul class="float-right">
-                  <li><a href="https://mungclub.com/bbs/login.php?url=https://mungclub.com" onclick="sidebar('login'); return false;">로그인</a></li>
+                  <li><a href="login.html" onclick="sidebar('login'); return false;">로그인</a></li>
                   <li><a href="https://mungclub.com/bbs/register.php">회원가입</a></li>
-                  
                </ul>
-
+               <!--로그인시 닉네임 추가-->
+               <div id="nickname" style="display:none;">닉네임: </div> <!-- 기본적으로 숨김 처리 -->
+               <script>
+                     window.onload = function() {
+                        const isLoggedIn = localStorage.getItem("isLoggedIn"); // 로그인 상태 확인
+                        const nickname = localStorage.getItem("nickname"); // 닉네임 가져오기
+            
+                        if (isLoggedIn && nickname) {
+                           document.getElementById("nickname").style.display = "block"; // 닉네임 보이게 처리
+                           document.getElementById("nickname").innerHTML += nickname;
+                        } else {
+                           // 로그인 페이지로 리디렉션하거나 로그인을 요청하는 메시지를 표시할 수 있습니다.
+                           // window.location.href = "login.html";
+                           alert("로그인이 필요한 페이지입니다.");
+                        }
+                     };
+               </script>
             </div>
          </aside>
          <!-- } LNB 끝 -->

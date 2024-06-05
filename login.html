@@ -201,7 +201,7 @@ $(function() {
                
                <!-- LNB Right -->
                <ul class="float-right">
-                  <li><a href="https://mungclub.com/bbs/login.php?url=https://mungclub.com" onclick="sidebar('login'); return false;">로그인</a></li>
+                  <li><a href="login.html" onclick="sidebar('login'); return false;">로그인</a></li>
                   <li><a href="https://mungclub.com/bbs/register.php">회원가입</a></li>
                   
                </ul>
@@ -480,20 +480,23 @@ $('#pp_ohwimunjlrpvqtfgsk .pp-sly').sly({
      </div>
      <!--login 함수-->
      <script>
-        function login() {
+         function login() {
             const validId = "testuser";
             const validPassword = "testpass";
+            const nickname = "TestUser"; // 사용자의 닉네임
             const inputId = document.getElementById('outlogin_mb_id').value;
             const inputPassword = document.getElementById('outlogin_mb_password').value;
 
             if (inputId === validId && inputPassword === validPassword) {
-                alert("로그인 성공!");
-                // 로그인 성공 시 수행할 작업 추가
+               alert("로그인 성공!");
+               localStorage.setItem("isLoggedIn", "true"); // 로그인 상태 저장
+               localStorage.setItem("nickname", nickname); // 사용자 닉네임 저장
+               window.location.href = "main.html";
             } else {
-                alert("아이디 또는 비밀번호가 잘못되었습니다.");
+               alert("아이디 또는 비밀번호가 잘못되었습니다.");
             }
-        }
-    </script>
+         }
+      </script>
      <!---------------------------------------------------------------------------------------------------------->
       <div class="col-md-9 na-col">
 
