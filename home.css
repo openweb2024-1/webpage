@@ -88,7 +88,7 @@
         background-color: #AFD485;
         color: #000000;
         text-align: center;
-        padding: 14.5px 16px;
+        padding: 1.5px 16px;
         text-decoration: none;
     }
     li a:hover{
@@ -132,4 +132,4 @@
         opacity: 1;
         transform: translateY(0);
     }
-</style> 
+</style>
