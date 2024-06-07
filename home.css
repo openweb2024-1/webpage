@@ -116,7 +116,6 @@ li {
 }
 
 li a {
-    background-color: #AFD485;
     color: #000000;
     text-align: center;
     padding: 1.5px 16px;
@@ -125,7 +124,6 @@ li a {
 
 li a:hover {
     color: #FFFFFF;
-    background-color: #7CAE7A;
     font-weight: normal;
 }
 
@@ -144,8 +142,29 @@ li a:hover {
     border-radius: 15px;
 }
 
-.menu li:hover {
+#li1:hover {
+    background-color: #7CAE7A;
+}
+#list1 #li1:hover {
+    color: #FFFFFF;
+    font-weight: normal;
     background-color: #7CAE7A; /* 마우스를 올렸을 때 배경색을 어둡게 변경 */
+}
+#li2:hover{
+    background-color: #7CAE7A;
+}
+#list2 #li2:hover{
+    color: #FFFFFF;
+    font-weight: normal;
+    background-color: #7CAE7A;
+}
+#li3:hover{
+    background-color: #7CAE7A;
+}
+#list3 #li3:hover{
+    color: #FFFFFF;
+    font-weight: normal;
+    background-color: #7CAE7A;
 }
 
 .sub-menu {
@@ -160,18 +179,43 @@ li a:hover {
     transform: translateY(-30px);
 }
 
-.sub-menu a {
-    background-color: #F1F8E9;
-}
-
 .sub-menu li {
     display: block;
 }
-
-.sub-menu a:hover {
+#uf1:hover{
     color: #FFD400;
-    background-color: #7CAE7A;
     font-weight: normal;
+    background-color: #7CAE7A;
+}
+#uf2:hover{
+    color: #FFD400;
+    font-weight: normal;
+    background-color: #7CAE7A;
+}
+#uf3:hover{
+    color: #FFD400;
+    font-weight: normal;
+    background-color: #7CAE7A;
+}
+#uf4:hover{
+    color: #FFD400;
+    font-weight: normal;
+    background-color: #7CAE7A;
+}
+#uf5:hover{
+    color: #FFD400;
+    font-weight: normal;
+    background-color: #7CAE7A;
+}
+#uf6:hover{
+    color: #FFD400;
+    font-weight: normal;
+    background-color: #7CAE7A;
+}
+#uf7:hover{
+    color: #FFD400;
+    font-weight: normal;
+    background-color: #7CAE7A;
 }
 
 li:hover .sub-menu {
