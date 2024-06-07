@@ -6,148 +6,149 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <meta charset="utf8">
     <meta charset="utf-8">
     <meta http-equiv="imagetoolbar" content="no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
-<style>
-    body {
-        font-family: "Noto Sans KR", sans-serif;
-    }
-</style>
 <body>
-    <div class ="linkusr">
-        <a href="login.html">로그인</a>
-        <a href="signup.html">회원가입</a>
-    </div>
-    <header class = "header">
-        <div class = "logo">
-            <a href="home.html"><img src="logo.png" alt="logo" href = "home.html"></a> 
+    <div class="container"> <!-- 배경 이미지가 적용될 컨테이너 -->
+        <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
+        <div class="linkusr">
+            <a href="login.html">로그인</a>
+            <a href="signup.html">회원가입</a>
         </div>
-    </header>
-    <div class = "menu">
-        <nav class = "clearfix">
-            <ul class="clearfix">
-                <li><a href = "guide.html">초보집사 가이드</a>
-                    <ul class="sub-menu">
-                        <li><a href = "dguide.html">강아지 가이드</a></li>
-                        <li><a href = "cguide.html">고양이 가이드</a></li>
-                        <li><a href = "oguide.html">기타 동물 가이드</a></li>
-                    </ul>
-                </li>
-                <li><a href = "shophome.html">반려동물 생활용품</a>
-                    <ul class="sub-menu">
-                        <li><a href = "foodshop.html">사료</a></li>
-                        <li><a href = "toyshop.html">장난감</a></li>
-                        <li><a href = "shopelse.html">기타 생활 용품</a></li>
-                    </ul></li>
-                <li><a href = "care.html">반려동물 건강관리</a>
-                    <ul class="sub-menu">
-                        <li><a href = "deepcare.html">상세 관리</a></li>
-                    </ul></li>
-            </ul>
-        </nav>
+        <header class="header">
+            <div class="logo">
+                <a href="home.html"><img src="logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id = "li1"><a id = "list1" href="guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id = "uf1"><a href="dguide.html">강아지 가이드</a></li>
+                            <li id = "uf2"><a href="cguide.html">고양이 가이드</a></li>
+                            <li id = "uf3"><a href="oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id = "li2"><a id = "list2" href="shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id = "uf4"><a href="foodshop.html">사료</a></li>
+                            <li id = "uf5"><a href="toyshop.html">장난감</a></li>
+                            <li id = "uf6"><a href="shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id = "li3"><a id = "list3" href="care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id = "uf7"><a href="deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!--로그인 기능---------------------------------------------------------------->
+    <div class="login-box">
+        <div class="login">
+            <div class="form-group"> <!--아이디 입력-->
+                <label for="outlogin_mb_id" class="sr-only"><b>아이디<strong class="sr-only"> *</strong></b></label>						
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user text-muted"></i></span>
+                    </div>
+                    <input type="text" name="mb_id" id="outlogin_mb_id" class="form-control required" placeholder="아이디">
+                </div>
+            </div>
+            <div class="form-group"><!--비밀번호 입력-->
+                <label for="outlogin_mb_password" class="sr-only"><b>비밀번호<strong class="sr-only"> *</b></strong></label>									
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-lock text-muted"></i></span>
+                    </div>
+                    <input type="password" name="mb_password" id="outlogin_mb_password" class="form-control required" placeholder="비밀번호">
+                </div>
+            </div>
+            <div class="form-group"> <!--로그인 버튼-->
+                <button type="submit" class="btn btn-primary btn-block btn-lg en" onclick="login()">
+                    로그인
+                </button>    
+            </div>
+        </div>
     </div>
-        <!--로그인 스타일-------------------------------------------------------------------------------------->
-        <style>
-         .login-box {
-             font-family: 'Noto Sans', sans-serif;
-             background-color: #f4f7f6; /* 배경을 밝은 색으로 설정하여 #AFD485 색상과 대비 */
-             padding: 5vh 0; /* 패딩 증가 */
-             display: flex;
-             justify-content: center;
-             align-items: center;
-             height: 100vh;
-         }
- 
-         .login {
-             background-color: #ffffff; /* 로그인 박스 배경 */
-             padding: 50px; /* 패딩 증가 */
-             border-radius: 12px; /* 모서리 둥글게 */
-             box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 추가 */
-             width: 40%; /* 너비 증가 */
-             height: 30%;
-         }
- 
-         .input-group-text {
-             background-color: #AFD485; /* 아이콘 배경 */
-             color: #ffffff; /* 아이콘 색상 */
-             border: none; /* 테두리 제거 */
-             font-size: 1.4rem; /* 아이콘 크기 증가 */
-         }
-         .form-group{
-             justify-content: center;
-             font-size: larger;
-         }
-         .form-control {
-             border: 1px solid #AFD485; /* 입력 필드 테두리 색상 */
-             font-size: 1.3rem; /* 글씨 크기 증가 */
-             height: 50px; /* 입력창 높이 증가 */
-             width: 80%; /* 너비 증가 */
-             border-radius: 8px; /* 모서리 둥글게 */
-             margin: 10px;
-         }
- 
-         .form-control:focus {
-             border-color: #8cbf7b; /* 입력 필드 포커스 시 테두리 색상 변경 */
-             box-shadow: 0 0 0 0.25rem rgba(175, 212, 133, 0.25); /* 포커스 그림자 */
-         }
- 
-         .btn-primary {
-             background-color: #AFD485; /* 버튼 배경 색상 */
-             border: none; /* 버튼 테두리 제거 */
-             font-size: 1.4rem; /* 버튼 글씨 크기 증가 */
-             padding: 15px 0; /* 버튼 패딩 증가 */
-             margin-top: 20px; /* 상단 여백 증가 */
-             border-radius: 8px; /* 모서리 둥글게 */
-             width: 120px;
-         }
- 
-         .btn-primary:hover {
-             background-color: #9cb96e; /* 버튼 호버 시 색상 변경 */
-         }
- 
-         .btn-primary:active {
-             background-color: #8cbf7b; /* 버튼 클릭 시 색상 변경 */
-         }
- 
-         .btn-primary:focus {
-             box-shadow: 0 0 0 0.25rem rgba(175, 212, 133, 0.25); /* 버튼 포커스 그림자 */
-         }
-     </style>
- 
-     <!--로그인 기능---------------------------------------------------------------->
-     <div class="login-box">
-         <div class="login">
-             <div class="form-group"> <!--아이디 입력-->
-                 <label for="outlogin_mb_id" class="sr-only"><b>아이디<strong class="sr-only"> *</strong></b></label>						
-                 <div class="input-group">
-                     <div class="input-group-prepend">
-                         <span class="input-group-text"><i class="fa fa-user text-muted"></i></span>
-                     </div>
-                     <input type="text" name="mb_id" id="outlogin_mb_id" class="form-control required" placeholder="아이디">
-                 </div>
-             </div>
-             <div class="form-group"><!--비밀번호 입력-->
-                 <label for="outlogin_mb_password" class="sr-only"><b>비밀번호<strong class="sr-only"> *</b></strong></label>									
-                 <div class="input-group">
-                     <div class="input-group-prepend">
-                         <span class="input-group-text"><i class="fa fa-lock text-muted"></i></span>
-                     </div>
-                     <input type="password" name="mb_password" id="outlogin_mb_password" class="form-control required" placeholder="비밀번호">
-                 </div>
-             </div>
-             <div class="form-group"> <!--로그인 버튼-->
-                 <button type="submit" class="btn btn-primary btn-block btn-lg en" onclick="login()">
-                     로그인
-                 </button>    
-             </div>
-         </div>
- 
-         <!--로그인 함수----------------------------------------------------------------------->
-         <script>
-             function login() {
+    <!--로그인 스타일-------------------------------------------------------------------------------------->
+    <style>
+        .login-box {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f4f7f6; /* 배경을 밝은 색으로 설정하여 #AFD485 색상과 대비 */
+            padding: 5vh 0; /* 패딩 증가 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            border-radius: 15px;
+        }
+
+        .login {
+            background-color: #ffffff; /* 로그인 박스 배경 */
+            padding: 50px; /* 패딩 증가 */
+            border-radius: 12px; /* 모서리 둥글게 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 추가 */
+            width: 40%; /* 너비 증가 */
+            height: 30%;
+        }
+
+        .input-group-text {
+            background-color: #AFD485; /* 아이콘 배경 */
+            color: #ffffff; /* 아이콘 색상 */
+            border: none; /* 테두리 제거 */
+            font-size: 1.4rem; /* 아이콘 크기 증가 */
+        }
+        .form-group{
+            justify-content: center;
+            font-size: larger;
+        }
+        .form-control {
+            border: 1px solid #AFD485; /* 입력 필드 테두리 색상 */
+            font-size: 1.3rem; /* 글씨 크기 증가 */
+            height: 50px; /* 입력창 높이 증가 */
+            width: 80%; /* 너비 증가 */
+            border-radius: 8px; /* 모서리 둥글게 */
+            margin: 10px;
+        }
+
+        .form-control:focus {
+            border-color: #8cbf7b; /* 입력 필드 포커스 시 테두리 색상 변경 */
+            box-shadow: 0 0 0 0.25rem rgba(175, 212, 133, 0.25); /* 포커스 그림자 */
+        }
+
+        .btn-primary {
+            background-color: #AFD485; /* 버튼 배경 색상 */
+            border: none; /* 버튼 테두리 제거 */
+            font-size: 1.4rem; /* 버튼 글씨 크기 증가 */
+            padding: 15px 0; /* 버튼 패딩 증가 */
+            margin-top: 20px; /* 상단 여백 증가 */
+            border-radius: 8px; /* 모서리 둥글게 */
+            width: 120px;
+        }
+
+        .btn-primary:hover {
+            background-color: #9cb96e; /* 버튼 호버 시 색상 변경 */
+        }
+
+        .btn-primary:active {
+            background-color: #8cbf7b; /* 버튼 클릭 시 색상 변경 */
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.25rem rgba(175, 212, 133, 0.25); /* 버튼 포커스 그림자 */
+        }
+    </style>
+
+
+
+        <!--로그인 함수----------------------------------------------------------------------->
+        <script>
+            function login() {
                 const validId = "testuser";
                 const validPassword = "testpass";
                 const username = "TestUser"; // 사용자의 닉네임
@@ -155,14 +156,14 @@
                 const inputPassword = document.getElementById('outlogin_mb_password').value;
     
                 if (inputId === validId && inputPassword === validPassword) {
-                   alert("로그인 성공!");
-                   localStorage.setItem("isLoggedIn", "true"); // 로그인 상태 저장
-                   localStorage.setItem("username", username); // 사용자 닉네임 저장
-                   window.location.href = "home.html";
+                    alert("로그인 성공!");
+                    localStorage.setItem("isLoggedIn", "true"); // 로그인 상태 저장
+                    localStorage.setItem("username", username); // 사용자 닉네임 저장
+                    window.location.href = "home.html";
                 } else {
-                   alert("아이디 또는 비밀번호가 잘못되었습니다.");
+                    alert("아이디 또는 비밀번호가 잘못되었습니다.");
                 }
-             }
+            }
         </script>
         <!----------------------------------------------------------------------------------------> 
 </body>
