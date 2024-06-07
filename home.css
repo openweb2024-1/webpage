@@ -1,7 +1,40 @@
 <style>
+    body{
+        margin: 0;
+        font-family: "Noto Sans KR",sans-serif;
+    }
+    .header{
+        width: 100%;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:10px 20px;
+        background-color: antiquewhite;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .logo{
+        display: flex;
+        align-items: center;
+    }
+    .logo img{
+        max-height: 100px;
+    }
+    .linkusr{
+        float: right;
+        display: flex;
+        gap: 20px;
+    }
+    .linkusr a{
+        text-decoration: none;
+        color:#007baa;
+        font-weight: bold;
+    }
+    .linkusr a:hover{
+        color: #8888ff;
+        text-decoration: underline;
+    }
     nav{
     	font-size: 12pt;
-    	font-family: 'PT Sans', Arial, Sans-serif;
     	position: relative;
     }
     nav ul{
@@ -59,8 +92,7 @@
         text-decoration: none;
     }
     li a:hover{
-        /*color: #597812;*/
-        color: #FFD400;
+        color: #FFFFFF;
         font-weight:normal;
     }
     .menu {
@@ -90,6 +122,10 @@
     }
     .sub-menu li{
         display: block;
+    }
+    .sub-menu a:hover{
+        color: #FFD400;
+        font-weight:normal;
     }
     li:hover .sub-menu{
         display: block;
