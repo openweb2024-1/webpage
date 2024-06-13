@@ -139,11 +139,12 @@ li a:hover {
     color: #032807;
     position: absolute;
     z-index: 1;
-    border-radius: 15px;
+    border-radius: 13px;
 }
 
 #li1:hover {
     background-color: #7CAE7A;
+    border-radius: 10px;
 }
 #list1 #li1:hover {
     color: #FFFFFF;
@@ -152,6 +153,7 @@ li a:hover {
 }
 #li2:hover{
     background-color: #7CAE7A;
+    border-radius: 10px;
 }
 #list2 #li2:hover{
     color: #FFFFFF;
@@ -160,6 +162,7 @@ li a:hover {
 }
 #li3:hover{
     background-color: #7CAE7A;
+    border-radius: 10px;
 }
 #list3 #li3:hover{
     color: #FFFFFF;
