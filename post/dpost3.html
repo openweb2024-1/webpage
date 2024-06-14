@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY</title>
+    <link rel="stylesheet" href="../home.css">
+    <meta charset="utf8">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-y: scroll; /* 전체 페이지에 대한 스크롤 활성화 */
+    }
+
+    #h {
+        font-family: "Noto Sans KR", sans-serif;
+        color: #AFD485;
+        text-shadow: 0 1.2px 1.5px rgba(0,0,0,0.4);
+    }
+
+    .container {
+        padding-bottom: 0vh; /* 하단 여백 추가 */
+    }
+
+    .board {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #f4f7f6; /* 배경을 밝은 색으로 설정하여 #AFD485 색상과 대비 */
+        padding: 10vh 5vh; /* 패딩 증가 */
+        display: flex;
+        flex-direction: column; /* 세로로 정렬 */
+        justify-content: flex-start; /* 상단에서 정렬 */
+        align-items: center; /* 세로 정렬 시 가운데 정렬 */
+        border-radius: 15px;
+    }
+
+</style>
+
+<body>
+    <div class="container"> <!-- 배경 이미지가 적용될 컨테이너 -->
+        <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
+        <header class="header">
+            <div class="logo">
+                <a href="../home.html"><img src="../logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id="li1"><a id="list1" href="../guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id="uf1"><a href="../dguide.html">강아지 가이드</a></li>
+                            <li id="uf2"><a href="../cguide.html">고양이 가이드</a></li>
+                            <li id="uf3"><a href="../oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id="li2"><a id="list2" href="../shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id="uf4"><a href="../foodshop.html">사료</a></li>
+                            <li id="uf5"><a href="../toyshop.html">장난감</a></li>
+                            <li id="uf6"><a href="../shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id="li3"><a id="list3" href="../care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id="uf7"><a href="../deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="board">
+            <h1 id="h">강아지 훈련 가이드</h1>
+            
+        </div>
+    </div>
+</body>
+</html>
