@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY</title>
+    <link rel="stylesheet" href="home.css">
+    <meta charset="utf8">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-y: scroll; /* 전체 페이지에 대한 스크롤 활성화 */
+    }
+
+    #h {
+        font-family: "Noto Sans KR", sans-serif;
+        color: #AFD485;
+        text-shadow: 0 1.2px 1.5px rgba(0,0,0,0.4);
+    }
+
+    .container {
+        padding-bottom: 77vh; /* 하단 여백 추가 */
+    }
+
+    .board {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #f4f7f6; /* 배경을 밝은 색으로 설정하여 #AFD485 색상과 대비 */
+        padding: 10vh 5vh; /* 패딩 증가 */
+        display: flex;
+        flex-direction: column; /* 세로로 정렬 */
+        justify-content: flex-start; /* 상단에서 정렬 */
+        align-items: center; /* 세로 정렬 시 가운데 정렬 */
+        border-radius: 15px;
+    }
+
+    .post {
+        background-color: rgba(175, 212, 133, 0.1); /* 반투명 흰색 배경 */
+        border-radius: 10px;
+        background-color: #ffffff; /* 로그인 박스 배경 */
+        padding: 20px; /* 패딩 증가 */
+        border-radius: 11px; /* 모서리 둥글게 */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 추가 */
+        margin-bottom: 20px;
+        width: 80%; /* 박스 너비 설정 */
+        display: flex; /* 세로로 정렬하기 위해 flex로 설정 */
+        flex-direction: column; /* 세로로 정렬 */
+        cursor: pointer; /* 마우스를 올리면 포인터로 변경 */
+        text-decoration: none; /* 링크 밑줄 제거 */
+        color: inherit; /* 링크 색상을 기본 색상으로 설정 */
+    }
+
+    .post:hover {
+        background-color: rgb(124, 174, 122, 0.1); /* 호버 시 배경색 변경 */
+    }
+
+    .post-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .post-content {
+        font-size: 14px;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0px 0 40px;
+    }
+
+    #searchBar {
+        width: 450px; /* 너비 조정 */
+        padding: 13px; /* 패딩 조정 */
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px; /* 더 둥글게 */
+        outline: none; /* 포커스 시 테두리 제거 */
+        margin: 10px 0 30px;
+    }
+
+    #searchBar::placeholder {
+        color: #aaa; /* 플레이스홀더 텍스트 색상 */
+    }
+
+    #searchBtn {
+        background-color: #AFD485; /* 버튼 배경색 */
+        color: white; /* 버튼 텍스트 색상 */
+        border: none; /* 테두리 없음 */
+        padding: 12px 20px; /* 패딩 설정 */
+        margin-left: 10px; /* 왼쪽 여백 */
+        border-radius: 3px; /* 둥글게 */
+        cursor: pointer; /* 포인터 커서 */
+        margin: 10px 10px 30px;
+    }
+
+    #searchBtn:hover {
+        background-color: #7EAE7A; /* 호버 시 배경색 변경 */
+    }
+
+</style>
+
+<body>
+
+    <!-- 모달 창 코드 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-title" class="post-title">
+                <!-- 모달에서 동적으로 제목이 바뀔 부분 -->
+            </div>
+            <div id="modal-content" class="post-content">
+                <!-- 모달에서 동적으로 내용이 바뀔 부분 -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container"> <!-- 배경 이미지가 적용될 컨테이너 -->
+        <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
+        <header class="header">
+            <div class="logo">
+                <a href="home.html"><img src="logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id="li1"><a id="list1" href="guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id="uf1"><a href="dguide.html">강아지 가이드</a></li>
+                            <li id="uf2"><a href="cguide.html">고양이 가이드</a></li>
+                            <li id="uf3"><a href="oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id="li2"><a id="list2" href="shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id="uf4"><a href="foodshop.html">사료</a></li>
+                            <li id="uf5"><a href="toyshop.html">장난감</a></li>
+                            <li id="uf6"><a href="shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id="li3"><a id="list3" href="care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id="uf7"><a href="deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="board">
+            <h1 id="h">기타 동물 가이드</h1>
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="원하는 동물을 입력하세요...">
+                <button id="searchBtn" onclick="searchPosts()">검색</button>
+            </div>
+
+            <!-- 각 동물에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('새', '새에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    새 알아보기
+                </div>
+                <div class="post-content">
+                    새에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('토끼', '토끼에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    토끼 알아보기
+                </div>
+                <div class="post-content">
+                    토끼에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('햄스터', '햄스터에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    햄스터 알아보기
+                </div>
+                <div class="post-content">
+                    햄스터에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('물고기', '물고기에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    물고기 알아보기
+                </div>
+                <div class="post-content">
+                    물고기에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('도마뱀', '도마뱀에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    도마뱀 알아보기
+                </div>
+                <div class="post-content">
+                    도마뱀에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('뱀', '뱀에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    뱀 알아보기
+                </div>
+                <div class="post-content">
+                    뱀에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('미어캣', '미어캣에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    미어캣 알아보기
+                </div>
+                <div class="post-content">
+                    미어캣에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('돼지', '돼지에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    돼지 알아보기
+                </div>
+                <div class="post-content">
+                    돼지에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('앵무새', '앵무새에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    앵무새 알아보기
+                </div>
+                <div class="post-content">
+                    앵무새에 대한 정보를 제공합니다
+                </div>
+            </a>
+            <a href="#" class="post" onclick="openModal('고슴도치', '고슴도치에 대한 정보를 제공합니다')">
+                <div class="post-title">
+                    고슴도치 알아보기
+                </div>
+                <div class="post-content">
+                    고슴도치에 대한 정보를 제공합니다
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function searchPosts() {
+        let filter = document.getElementById('searchBar').value.toLowerCase();
+        let posts = document.querySelectorAll('.post');
+        
+        posts.forEach(function(post) {
+            let title = post.querySelector('.post-title').textContent.toLowerCase();
+            let content = post.querySelector('.post-content').textContent.toLowerCase();
+            if (title.includes(filter) || content.includes(filter)) {
+                post.style.display = '';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    }
+
+    function openModal(title, content) {
+        document.getElementById('myModal').style.display = 'block';
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-content').textContent = content;
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+</script>
+
+<style>
+    /* 모달 전체 스타일 */
+    .modal {
+        display: none; /* 초기에는 숨김 */
+        position: fixed; /* 페이지에 고정 */
+        z-index: 1000; /* 다른 요소들보다 위에 표시 */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7); /* 반투명 배경 */
+    }
+
+    /* 모달 콘텐츠 스타일 */
+    .modal-content {
+        background-color: rgb(254, 254, 254, 0.9); /* 모달 창 배경색 */
+        margin: 10% auto; /* 중앙 정렬 */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%; /* 모달 너비 */
+        height: 500px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        position: relative;
+    }
+
+    /* 모달 닫기 버튼 스타일 */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
