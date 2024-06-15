@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY - 게시물</title>
+    <link rel="stylesheet" href="../home.css">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-y: scroll;
+    }
+
+    #h {
+        font-family: "Noto Sans KR", sans-serif;
+        color: #AFD485;
+        text-shadow: 0 1.2px 1.5px rgba(0,0,0,0.4);
+    }
+
+    .container {
+        padding-bottom: 0vh;
+    }
+
+    .board {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #f4f7f6;
+        padding: 12vh 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 15px;
+        margin: 0 auto;
+    }
+
+    .post {
+        background-color: #fff;
+        padding: 2vh 3vh;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 85%;
+    }
+
+    .post-header {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1vh;
+        margin-bottom: 2vh;
+    }
+
+    .post-title {
+        font-size: 2em;
+        color: #333;
+    }
+
+    .post-meta {
+        font-size: 0.9em;
+        color: #777;
+    }
+
+    .post-content {
+        font-size: 1.0em;
+        color: #555;
+        line-height: 1.9;
+        text-align: left;
+    }
+
+    .post-content ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    .post-content ul li {
+        margin-bottom: 10px;
+        text-align: left;
+        text-align: start;
+    }
+
+    .post-content ul li strong {
+        font-weight: bold;
+    }
+
+    .post-content ul li span.source {
+        color: #777;
+        font-size: 0.9em;
+        margin-left: 10px;
+    }
+
+    .post-image {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .navigation {
+        margin-top: 3vh;
+        display: flex;
+        justify-content: space-between;
+        width: 28vh;
+    }
+
+    .nav-button {
+        background-color: #AFD485;
+        color: white;
+        padding: 1vh 2vh;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1em;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-button:hover {
+        background-color: rgb(131, 179, 130);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-button.disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="overlay"></div>
+        <header class="header">
+            <div class="logo">
+                <a href="../home.html"><img src="../logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id="li1"><a id="list1" href="../guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id="uf1"><a href="../dguide.html">강아지 가이드</a></li>
+                            <li id="uf2"><a href="../cguide.html">고양이 가이드</a></li>
+                            <li id="uf3"><a href="../oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id="li2"><a id="list2" href="../shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id="uf4"><a href="../foodshop.html">사료</a></li>
+                            <li id="uf5"><a href="../toyshop.html">장난감</a></li>
+                            <li id="uf6"><a href="../shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id="li3"><a id="list3" href="../care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id="uf7"><a href="../deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="board">
+            <div class="post">
+                <div class="post-header">
+                    <h2 class="post-title">사냥 놀이하기</h2>
+                    <div class="post-meta">작성자: 관리자 | 작성일: 2024-06-15</div>
+                </div>
+                <img class="post-image" src="../image/cat3.jpg" alt="강아지 훈련">
+                <div class="post-content">
+                    <p>
+                    고양이는 작은 동물을 사냥하는 본능을 가지고 있습니다. 야외 활동을 하지 않는 반려묘들에게 사냥 놀이는 이러한 본능을 충족시켜주는 중요한 활동입니다. 사냥 놀이는 고양이의 신체적 건강뿐만 아니라 정신적 자극을 제공하여 스트레스를 해소하고 행복감을 느끼게 합니다. 오늘은 이러한 사냥 놀이에 대해 알아보도록 하겠습니다.</p>
+                    <br>
+
+                    <h3>1. 장난감 선택</h3>
+                    <ul>
+                        <li><strong> - 낚싯대형 장난감:</strong> 긴 막대기에 끈이 달린 장난감으로 끝에 깃털이나 작은 인형이 달려있는 형태입니다.</li>
+                        <li><strong> - 공:</strong> 작은 공을 던져주면 고양이가 쫓아가며 놀 수 있습니다. 고양이 전용 공은 가벼우면서도 고양이의 주의를 끌도록 소리가 나는 것도 좋습니다.</li>
+                        <li><strong> - 레이저 포인터:</strong> 빨간 점을 따라다니며 고양이의 사냥 본능을 자극할 수 있습니다. 단, 실제로 잡을 수 있는 물체가 아니기 때문에 너무 자주 사용하면 고양이가 좌절할 수 있습니다.</li>
+                    </ul><br>
+
+
+                    <h3>2. 놀이 시간 설정</h3>
+                    <p>매일 일정한 시간을 정해 고양이와 놀아주는 것이 좋습니다. 하루 10-15분 정도의 짧은 놀이 시간을 여러 번 가지는 것이 이상적입니다.
+                    <br>놀이 시간은 고양이의 에너지 레벨에 맞춰 조절해 주세요. 놀이 후에는 고양이가 휴식을 취할 수 있도록 합니다.<br>
+                    </p>
+                    <br>
+
+                    <h3>3. 상호작용</h3>
+                    <p>장난감을 단순히 던져주기보다는 직접 장난감을 움직여 고양이가 추격할 수 있도록 합니다.<br>고양이가 흥미를 잃지 않도록 다양한 속도로 움직이거나 방향을 바꾸어 주세요.
+                    <br>그리고 고양이가 장난감을 잡았을 때 칭찬하고 간식을 주어 긍정적인 강화 학습을 할 수 있도록 해주면 더욱 좋습니다.
+                    </p>
+                    <br>
+
+                    <h3>4. 환경 변화</h3>
+                    <p>고양이가 지루해하지 않도록 놀이 공간이나 장난감을 주기적으로 바꿔줍니다.
+                    <br>예를 들어, 숨을 수 있는 상자나 터널을 마련해주면 고양이가 더 흥미를 느낄 수 있습니다.
+                    </p>
+                    <br><br>
+
+
+                    
+                </div>
+            </div>
+            <div class="navigation">
+                <a href="cpost2.html" class="nav-button">이전 게시물</a>
+                <a href="#" class="nav-button disabled">다음 게시물</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
