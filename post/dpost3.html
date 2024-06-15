@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>FURMILLY</title>
+    <title>FURMILLY - 게시물</title>
     <link rel="stylesheet" href="../home.css">
-    <meta charset="utf8">
     <meta charset="utf-8">
     <meta http-equiv="imagetoolbar" content="no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +18,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        overflow-y: scroll; /* 전체 페이지에 대한 스크롤 활성화 */
+        overflow-y: scroll;
     }
 
     #h {
@@ -29,25 +28,89 @@
     }
 
     .container {
-        padding-bottom: 0vh; /* 하단 여백 추가 */
+        padding-bottom: 0vh;
     }
 
     .board {
         font-family: 'Noto Sans', sans-serif;
-        background-color: #f4f7f6; /* 배경을 밝은 색으로 설정하여 #AFD485 색상과 대비 */
-        padding: 10vh 5vh; /* 패딩 증가 */
+        background-color: #f4f7f6;
+        padding: 12vh 5vh;
         display: flex;
-        flex-direction: column; /* 세로로 정렬 */
-        justify-content: flex-start; /* 상단에서 정렬 */
-        align-items: center; /* 세로 정렬 시 가운데 정렬 */
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
         border-radius: 15px;
+        margin: 0 auto;
+    }
+
+    .post {
+        background-color: #fff;
+        padding: 2vh 3vh;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 85%;
+    }
+
+    .post-header {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1vh;
+        margin-bottom: 2vh;
+    }
+
+    .post-title {
+        font-size: 2em;
+        color: #333;
+    }
+
+    .post-meta {
+        font-size: 0.9em;
+        color: #777;
+    }
+
+    .post-content {
+        font-size: 1.0em;
+        color: #555;
+        line-height: 1.9;
+    }
+
+    .post-image {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .navigation {
+        margin-top: 3vh;
+        display: flex;
+        justify-content: space-between;
+        width: 28vh;
+    }
+
+    .nav-button {
+        background-color: #AFD485;
+        color: white;
+        padding: 1vh 2vh;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1em;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-button:hover {
+        background-color: rgb(131, 179, 130);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     }
 
 </style>
 
 <body>
-    <div class="container"> <!-- 배경 이미지가 적용될 컨테이너 -->
-        <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
+    <div class="container">
+        <div class="overlay"></div>
         <header class="header">
             <div class="logo">
                 <a href="../home.html"><img src="../logo.png" alt="logo"></a>
@@ -80,8 +143,45 @@
         </div>
     
         <div class="board">
-            <h1 id="h">강아지 훈련 가이드</h1>
-            
+            <div class="post">
+                <div class="post-header">
+                    <h2 class="post-title">'기다려!' 가르치기</h2>
+                    <div class="post-meta">작성자: 관리자 | 작성일: 2024-06-15</div>
+                </div>
+                <img class="post-image" src="../image/dog3.jpg" alt="강아지 훈련">
+                <div class="post-content">
+                    <p>'앉아' 교육은 가장 기본적이고 중요한 훈련 중 하나입니다. 하지만 '앉아' 교육의 목적과 방법을 제대로 알고 있지 않은 상태에서 훈련을 하는 경우가 많습니다. 오늘은 강아지에게 '앉아' 교육을 효과적으로 진행하기 위한 방법에 대해서 알아보도록 하겠습니다.</p>
+                    <br>
+
+                    <h3>1. 사인 정하기</h3>
+                    <p>말로만 하는 것이 아니라 손의 사인과 함께 신호를 정해주세요.<br>그렇게 하면 시끌벅적한 곳에서도 손의 사인으로 신호를 할 수 있어 편리합니다.
+                    <br>손바닥을 보이며 "스톱"을 하는 사인이 일반적입니다.
+                    </p>
+                    <br>
+
+                    <h3>2. 강아지 자세 유지하기</h3>
+                    <p>앉힌 상태에서 강아지에게 말과 사인을 합니다. 처음에는 단 1초라도 가만히 있을 수 있으면 칭찬하세요.<br>
+                    엎드린 자세로 기다려를 가르쳐 주고 싶으면 엎드리게 하고 나서 말과 사인을 합니다. 앉은 상태에서와 마찬가지로 1초부터 차근차근 시작해요.
+                    </p>
+                    <br>
+
+                    <h3>3. 기다려 해제 신호도 함께 연습하기</h3>
+                    <p>기다려를 외우게 할 때는 해제 사인도 함께 외우게 하는 것이 더 효율이 좋습니다. 해제의 말은 "좋아, 그만" 등이 일반적입니다.<br>또한 사인은 강아지에게 보여 주고 있던 손을 내리는 것만으로도 괜찮습니다.
+                    </p>
+                    <br>
+
+                    <h3>4. 강아지 상태를 보고 시간 늘려가기</h3>
+                    <p>훈련도 되지 않은 채로 갑자기 오랜 시간 동안 기다려라고 해도 할 수 없어요.<br>1-2초부터 시작하여 서서히 시간을 늘려 나가요. 목표로 하는 것은 앉은 상태라면 1-2분, 엎드린 상태라면 15분 정도가 좋습니다.
+                    </p>
+                    <br><br>
+
+                    
+                </div>
+            </div>
+            <div class="navigation">
+                <a href="dpost2.html" class="nav-button">이전 게시물</a>
+                <a href="dpost4.html" class="nav-button">다음 게시물</a>
+            </div>
         </div>
     </div>
 </body>
