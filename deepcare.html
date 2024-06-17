@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY DEEPCARE</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="utf8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>
+        body{
+            overflow-y: auto;
+        }
+        .pagesize {
+            width: 70%; /* 전체 너비를 70%로 설정 */
+            margin: 0 auto; /* 왼쪽과 오른쪽 마진을 자동으로 설정하여 가운데로 정렬 */
+            position: relative;
+            height: 100%; /* 전체 높이 설정 */
+        }
+        #vaccine {
+            border-collapse: collapse;
+            table-layout: fixed;
+            border: 1px solid black;
+        }
+
+        #vaccine th, #vaccine td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+            width:70px;
+        }
+        #addVacPage{
+            transition: max-height 0.3s ease-out;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="pagesize"> <!-- 전체 페이지 사이즈 -->
+        <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
+        <div class="linkusr">
+            <a href="login.html">로그인</a>
+            <a href="signup.html">회원가입</a>
+        </div>
+        <header class="header">
+            <div class="logo">
+                <a href="home.html"><img src="logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id = "li1"><a id = "list1" href="guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id = "uf1"><a href="dguide.html">강아지 가이드</a></li>
+                            <li id = "uf2"><a href="cguide.html">고양이 가이드</a></li>
+                            <li id = "uf3"><a href="oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id = "li2"><a id = "list2" href="shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id = "uf4"><a href="foodshop.html">사료</a></li>
+                            <li id = "uf5"><a href="toyshop.html">장난감</a></li>
+                            <li id = "uf6"><a href="shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id = "li3"><a id = "list3" href="care.html">반려동물 관리</a>
+                        <ul class="sub-menu">
+                            <li id = "uf7"><a href="deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+    <br><br><br><br>
+    <h2>접종 확인하기</h2>
+    <hr>
+    <div style="padding: 10pt; border:1px solid black">
+        <div>
+        <table id = "vaccine" style = "position : center;">        
+            <th width = 50px> </th>
+            <th> 1월</th>
+            <th> 2월</th>
+            <th> 3월</th>
+            <th> 4월</th>
+            <th> 5월</th>
+            <th> 6월</th>
+            <th> 7월</th>
+            <th> 8월</th>
+            <th> 9월</th>
+            <th> 10월</th>
+            <th> 11월</th>
+            <th> 12월</th>
+            <th>delete</th>
+            <th>modify</th>
+        </table>
+    </div><br>
+    <div id = "ptoclickAddVacPage" style="font-size : 14pt" onclick="clicToAddVac()">주사 추가 (열기)</div> 
+    <div id = "addVacPage"style = "padding : 5pt; border : 1px solid black">
+        <label for="vacname"><b>주사 이름 </b> </label><br>
+        <input type="text" id="vacname"><br><br>
+        <label for="months">접종 달</label>
+        <div id="checkboxBox">
+            <input type="checkbox" id="month1" value="1"><label for="month1">1월</label><br>
+            <input type="checkbox" id="month2" value="2"><label for="month2">2월</label><br>
+            <input type="checkbox" id="month3" value="3"><label for="month3">3월</label><br>
+            <input type="checkbox" id="month4" value="4"><label for="month4">4월</label><br>
+            <input type="checkbox" id="month5" value="5"><label for="month5">5월</label><br>
+            <input type="checkbox" id="month6" value="6"><label for="month6">6월</label><br>
+            <input type="checkbox" id="month7" value="7"><label for="month7">7월</label><br>
+            <input type="checkbox" id="month8" value="8"><label for="month8">8월</label><br>
+            <input type="checkbox" id="month9" value="9"><label for="month9">9월</label><br>
+            <input type="checkbox" id="month10" value="10"><label for="month10">10월</label><br>
+            <input type="checkbox" id="month11" value="11"><label for="month11">11월</label><br>
+            <input type="checkbox" id="month12" value="12"><label for="month12">12월</label><br>
+        </div><br>
+        <label for="vacdate"><b>(선택사항) 접종 날짜 </b></label><br>
+        <input type="text" id="vacdate"><br><br>
+        <button onclick="addvacs()">추가하기</button>
+    </div>
+    </div>
+    <script>
+        //백신 추가 페이지 열고 닫기 설정
+        document.getElementById("ptoclickAddVacPage").addEventListener("click","clickToAddVac");
+
+        function clickToAddVac(){
+            var content = document.getElementById("addVacPage");
+            content.classList.toggle("active");
+            var clicktext = document.getElementById("ptoclickAddVacPage");
+            if (content.classList.contains("active")){
+                clicktext.textContent = "주사 추가 (닫기)";
+            } 
+            else{
+                clicktext.textContent = "주사 추가 (열기)";
+            }
+        }
+
+        //추가하기 버튼 눌렀을 때 추가되는 과정
+        function addvacs(){
+            var vacName = document.getElementById("vacname").value;
+            var vacDate = document.getElementById("vacdate").value;
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            var table = document.getElementById("vaccine");
+            var tbody = table.querySelector("tbody");
+            var newRow = tbody.insertRow();
+            
+            // 주사 이름 셀 추가
+            var nameCell = newRow.insertCell();
+            nameCell.textContent = vacName;
+            
+            // 각 월에 대한 셀 추가
+            for (var i = 1; i <= 12; i++) {
+                var cell = newRow.insertCell();
+                var isCheck = false;
+
+                checkboxes.forEach(function(cb){
+                    if (cb.checked && cb.value == i){
+                        isCheck = true;
+                    }
+                });
+
+                if (vacDate !=''){
+                    cell.textContent = vacDate;
+                }
+                else{
+                    cell.textContent = isCheck ? "O" : "";
+                }
+            }
+
+            // 삭제 버튼 셀 추가
+            var deleteCell = newRow.insertCell();
+            var deleteButton = document.createElement("button");
+            deleteButton.textContent = "-";
+            deleteButton.onclick = function() {
+                tbody.removeChild(newRow);
+            };
+            deleteCell.appendChild(deleteButton);
+            
+            //수정 버튼 셀 추가
+            var modifyCell = newRow.insertCell();
+            var modifyButton = document.createElement("button");
+            modifyButton.textContent = "수정";
+            modifyButton.onclick = function(){};//***아직 작성 x. 누르면 항목들 수정 가능한 창 띄우기
+            modifyCell.appendChild(modifyButton);
+
+            // 폼 초기화
+            document.getElementById("vacname").value = "";
+            checkboxes.forEach(function(cb) {
+                cb.checked = false;
+            });
+        }
+    </script>
+    </div>
+</body>
+</html>
