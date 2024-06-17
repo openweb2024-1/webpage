@@ -24,7 +24,7 @@
         // HTML을 삽입하는 함수
         function insertHtml(element, rank, rating) {
             element.innerHTML = `
-                <div class="rank"><h3>Rank ${rank}</h3></div>
+                <div class="rank"><h2>Rank ${rank}</h2></div>
                 <div class="rating">평점 평균: ${rating}</div>
             `;
         }
@@ -64,6 +64,28 @@
             ['Food', 'Toy', 'Else'].forEach(type => loadRatings(type));
         }
 
+        //검색기능
+        function searchProducts() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const productReviews = document.querySelectorAll('.product-review');
+
+            productReviews.forEach(product => {
+                const productElements = product.querySelectorAll('h3, h2');
+                let found = false;
+                productElements.forEach(element => {
+                    const text = element.innerText.toLowerCase();
+                    if (text.includes(input)) {
+                        found = true;
+                    }
+                });
+                
+                if (found) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
     </script>
 
     <style>
@@ -131,6 +153,35 @@
             text-align: center; /* 텍스트 가운데 정렬 */
             margin-top: auto; /* 나머지 공간을 모두 위쪽에 배분 */
         }
+
+        /*검색*/
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #7CAE7A;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5c9c58;
+        }
+
     </style>
 </head>
 <body>
@@ -174,6 +225,12 @@
         <div class="review-type">
             <h1>Review home</h1>
         </div>
+        <!--검색기능-->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="검색어를 입력하세요...">
+            <button onclick="searchProducts()">검색</button>
+        </div>
+
         <div class="review-select-box">
             <div class="review-select">
                 <div class="review-select-grid">
