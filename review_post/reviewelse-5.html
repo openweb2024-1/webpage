@@ -21,11 +21,11 @@
             const reviewData = { product_name, email, rating, review };
             
             // 기존 리뷰 배열을 가져옴
-            let reviewfood_3 = JSON.parse(localStorage.getItem('reviewfood_3')) || [];
+            let reviewelse_5 = JSON.parse(localStorage.getItem('reviewelse_5')) || [];
             // 새로운 리뷰를 배열에 추가
-            reviewfood_3.push(reviewData);
+            reviewelse_5.push(reviewData);
             // 로컬 스토리지에 저장
-            localStorage.setItem('reviewfood_3', JSON.stringify(reviewfood_3));
+            localStorage.setItem('reviewelse_5', JSON.stringify(reviewelse_5));
 
             // 폼 제출 후 리뷰를 바로 보여주기
             showReviews();
@@ -35,10 +35,10 @@
 
         // 로컬 스토리지에서 모든 리뷰를 불러와 보여주는 함수
         function showReviews() {
-            const reviewfood_3 = JSON.parse(localStorage.getItem('reviewfood_3')) || [];
+            const reviewelse_5 = JSON.parse(localStorage.getItem('reviewelse_5')) || [];
             const savedReviewDiv = document.getElementById('savedReview');
             savedReviewDiv.innerHTML = '<h3>Reviews</h3>';
-            reviewfood_3.forEach((review, index) => {
+            reviewelse_5.forEach((review, index) => {
                 savedReviewDiv.innerHTML += `
                     <div class="review">
                         <p><strong>Name:</strong> ${review.product_name}</p>
@@ -50,7 +50,7 @@
                 `;
             });
             // 평균 평점 계산 및 표시
-            showAverageRating(reviewfood_3);
+            showAverageRating(reviewelse_5);
         }
 
         // 페이지 로드 시 저장된 리뷰 보여주기
@@ -58,10 +58,10 @@
             showReviews();
         };
         // 평균 평점을 계산하고 표시하는 함수
-        function showAverageRating(reviewfood_3) {
-            const totalReviews = reviewfood_3.length;
+        function showAverageRating(reviewelse_5) {
+            const totalReviews = reviewelse_5.length;
             if (totalReviews > 0) {
-                const totalRating = reviewfood_3.reduce((sum, review) => sum + parseFloat(review.rating), 0);
+                const totalRating = reviewelse_5.reduce((sum, review) => sum + parseFloat(review.rating), 0);
                 const averageRating = (totalRating / totalReviews).toFixed(2);
                 document.getElementById('averageRating').innerText = `평점 평균: ${averageRating}`;
                 // 평균 평점을 로컬 스토리지에 저장
@@ -75,7 +75,7 @@
 
         // 평균 평점을 로컬 스토리지에 저장하는 함수
         function saveAverageRating(averageRating) {
-            localStorage.setItem('averageRatingFood-3', averageRating);
+            localStorage.setItem('averageRatingElse-5', averageRating);
         }
     </script>
 
@@ -248,18 +248,17 @@
             </nav>
         </div>
         <div class="review-type">
-            <h1>FOOD Review</h1>
+            <h1>TOY Review</h1>
         </div>
         <div class="main-content">
             <!--상품 설명----------------------------------->
             <div class="product-box">
-                
-                    <img src="../review_img/food3.png" alt="상품 이미지">
-                    <div class="product-description">
-                        <div id="averageRating"></div>
-                        <h2>[강아지]페페로니 반려견간식 오메가3 져키 연어 180g + 소고기 180g 1세트</h2>
-                        <p>가격: 12,000원</p>
-                        <p>페페로니 진짜 오메가3 시리즈 강아지에게 좋은 원료 오메가3, 연어오일, 글루코사민, L-라이신 첨가</p>
+                <img src="../review_img/else5.png" alt="상품 이미지">
+                <div class="product-description">
+                    <div id="averageRating"></div>
+                    <h2>[앵무새] 리프패럿 앵무새 안전 앵보장 중소형 600, 화이트, 1개</h2>
+                    <p>가격: 37,000원</p>
+                    <p>리프패럿 앵무새 안전 앵보장 중소형 <br>가로: 60cm  세로: 40cm  넓이: 40cm<br> 큰문 (가로: 21cm, 세로: 27cm)</p>
                 </div>
             </div>
             <!--리뷰------------------------->

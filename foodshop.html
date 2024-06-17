@@ -25,7 +25,7 @@
         function insertHtml(element, rank, rating) {
             element.innerHTML = `
                 <div class="rank"><h3>Rank ${rank}</h3></div>
-                <div class="rating">Average Rating: ${rating}</div>
+                <div class="rating">평점 평균: ${rating}</div>
             `;
         }
 
@@ -54,7 +54,7 @@
             for (let i = 1; i <= 5; i++) {
                 if (!ratings.some(item => item.id === i)) {
                     const element = document.getElementById(`averageRatingFood-${i}`);
-                    element.innerHTML = '<h3>No Rank</h3>No average rating available.';
+                    element.innerHTML = '<h3>No Rank</h3>등록된 리뷰가 없습니다.';
                 }
             }
         }
@@ -136,7 +136,7 @@
         </div>
         <header class="header">
             <div class="logo">
-                <a href="home.html"><img src="logo.png" alt="logo"></a>
+                <a href="main.html"><img src="logo.png" alt="logo"></a>
             </div>
         </header>
         <div class="menu">
@@ -192,21 +192,21 @@
                     <div class="product-review">
                         <div id="averageRatingFood-3"></div>
                         <img src="review_img/food3.png" alt="제품 3">
-                        <h3>[강아지]페페로니 반려견간식 연어 + 소고기</h3>
+                        <h3>[강아지] 페페로니 반려견간식 연어 + 소고기</h3>
                         <p>₩12,000</p>
                         <button onclick="location.href='review_post/reviewfood-3.html'">Review 보기</button>
                     </div>
                     <div class="product-review">
                         <div id="averageRatingFood-4"></div>
                         <img src="review_img/food4.png" alt="제품 4">
-                        <h3>[강아지]ANF 전연령 독 식스프리 플러스 레드 건식사료</h3>
+                        <h3>[강아지] ANF 전연령 독 식스프리 플러스 레드 건식사료</h3>
                         <p>₩45,700</p>
                         <button onclick="location.href='review_post/reviewfood-4.html'">Review 보기</button>
                     </div>
                     <div class="product-review">
                         <div id="averageRatingFood-5"></div>
                         <img src="review_img/food5.png" alt="제품 5">
-                        <h3>[토끼]제이펫 슈프림펫 러셀 래빗 테이스티믹스 토끼사료</h3>
+                        <h3>[토끼] 제이펫 슈프림펫 러셀 래빗 테이스티믹스 토끼사료</h3>
                         <p>₩14,900</p>
                         <button onclick="location.href='review_post/reviewfood-5.html'">Review 보기</button>
                     </div>
