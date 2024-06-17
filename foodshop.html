@@ -54,7 +54,7 @@
             for (let i = 1; i <= 5; i++) {
                 if (!ratings.some(item => item.id === i)) {
                     const element = document.getElementById(`averageRatingFood-${i}`);
-                    element.innerHTML = 'No average rating available.';
+                    element.innerHTML = '<h3>No Rank</h3>No average rating available.';
                 }
             }
         }
@@ -177,39 +177,38 @@
                         <div class="product-review-element">
                             <h3>제품 1</h3>
                             <p>₩10,000</p>
-                            <button onclick="location.href='reviewfood-1.html'">Review 보기</button>
+                            <button onclick="location.href='review_post/reviewfood-1.html'">Review 보기</button>
                         </div>
                     </div>
                     <div class="product-review">
                         <div id="averageRatingFood-2"></div>
                         <img src="review_img/food2.png" alt="제품 2">
-
                         <div class="product-review-element">
                             <h3>제품 2</h3>
                             <p>₩20,000</p>
-                            <button onclick="location.href='reviewfood-1.html'">Review 보기</button>
+                            <button onclick="location.href='review_post/reviewfood-2.html'">Review 보기</button>
                         </div>
                     </div>
                     <div class="product-review">
-                        <img src="고양이 사료 예시 1.png" alt="제품 3">
-                        <h3>제품 3</h3>
                         <div id="averageRatingFood-3"></div>
+                        <img src="review_img/food3.png" alt="제품 3">
+                        <h3>제품 3</h3>
                         <p>₩30,000</p>
-                        <button>Review 보기</button>
+                        <button onclick="location.href='review_post/reviewfood-3.html'">Review 보기</button>
                     </div>
                     <div class="product-review">
-                        <img src="고양이 사료 예시 1.png" alt="제품 4">
-                        <h3>제품 4</h3>
                         <div id="averageRatingFood-4"></div>
+                        <img src="review_img/food4.png" alt="제품 4">
+                        <h3>제품 4</h3>
                         <p>₩40,000</p>
-                        <button>Review 보기</button>
+                        <button onclick="location.href='review_post/reviewfood-4.html'">Review 보기</button>
                     </div>
                     <div class="product-review">
-                        <img src="고양이 사료 예시 1.png" alt="제품 5">
-                        <h3>제품 5</h3>
                         <div id="averageRatingFood-5"></div>
+                        <img src="review_img/food5.png" alt="제품 5">
+                        <h3>제품 5</h3>
                         <p>₩50,000</p>
-                        <button>Review 보기</button>
+                        <button onclick="location.href='review_post/reviewfood-5.html'">Review 보기</button>
                     </div>
                 </div>
             </div>

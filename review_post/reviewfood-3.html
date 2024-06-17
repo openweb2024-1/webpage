@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <title>FURMILLY</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -19,32 +19,64 @@
             const review = document.getElementById('review').value;
             
             const reviewData = { product_name, email, rating, review };
-            localStorage.setItem('review', JSON.stringify(reviewData));
+            
+            // 기존 리뷰 배열을 가져옴
+            let reviewfood_3 = JSON.parse(localStorage.getItem('reviewfood_3')) || [];
+            // 새로운 리뷰를 배열에 추가
+            reviewfood_3.push(reviewData);
+            // 로컬 스토리지에 저장
+            localStorage.setItem('reviewfood_3', JSON.stringify(reviewfood_3));
 
             // 폼 제출 후 리뷰를 바로 보여주기
-            showReview();
+            showReviews();
             // 폼 초기화
             document.getElementById('review_form').reset();
         }
 
-        // 로컬 스토리지에서 리뷰를 불러와 보여주는 함수
-        function showReview() {
-            const savedReview = JSON.parse(localStorage.getItem('review'));
-            if (savedReview) {
-                document.getElementById('savedReview').innerHTML = `
-                    <h3>Saved Review</h3>
-                    <p>Product Name: ${savedReview.product_name}</p>
-                    <p>Email: ${savedReview.email}</p>
-                    <p>Rating: ${savedReview.rating}</p>
-                    <p>Review: ${savedReview.review}</p>
+        // 로컬 스토리지에서 모든 리뷰를 불러와 보여주는 함수
+        function showReviews() {
+            const reviewfood_3 = JSON.parse(localStorage.getItem('reviewfood_3')) || [];
+            const savedReviewDiv = document.getElementById('savedReview');
+            savedReviewDiv.innerHTML = '<h3>Reviews</h3>';
+            reviewfood_3.forEach((review, index) => {
+                savedReviewDiv.innerHTML += `
+                    <div class="review">
+                        <p><strong>Name:</strong> ${review.product_name}</p>
+                        <p><strong>Email:</strong> ${review.email}</p>
+                        <p><strong>Score:</strong> ${review.rating}</p>
+                        <p><strong>Review:</strong> ${review.review}</p>
+                    </div>
+                    <hr>
                 `;
-            }
+            });
+            // 평균 평점 계산 및 표시
+            showAverageRating(reviewfood_3);
         }
 
         // 페이지 로드 시 저장된 리뷰 보여주기
         window.onload = function() {
-            showReview();
+            showReviews();
         };
+        // 평균 평점을 계산하고 표시하는 함수
+        function showAverageRating(reviewfood_3) {
+            const totalReviews = reviewfood_3.length;
+            if (totalReviews > 0) {
+                const totalRating = reviewfood_3.reduce((sum, review) => sum + parseFloat(review.rating), 0);
+                const averageRating = (totalRating / totalReviews).toFixed(2);
+                document.getElementById('averageRating').innerText = `평점 평균: ${averageRating}`;
+                // 평균 평점을 로컬 스토리지에 저장
+                saveAverageRating(averageRating);
+            } else {
+                document.getElementById('averageRating').innerText = '작성된 리뷰 없음';
+                // 리뷰가 없을 경우 로컬 스토리지에서 평균 평점 제거
+                localStorage.removeItem('averageRating');
+            }
+        }
+
+        // 평균 평점을 로컬 스토리지에 저장하는 함수
+        function saveAverageRating(averageRating) {
+            localStorage.setItem('averageRatingFood-1', averageRating);
+        }
     </script>
 
     <style>
@@ -59,6 +91,10 @@
             background-color: #F4F9F4;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 60%;
+            /*리뷰 입력과 리뷰 가로로 배치하기 위함*/
+            display: flex;
+            justify-content: space-between;
         }
 
         .review-box h2 {
@@ -69,6 +105,7 @@
             background-color: #FFFFFF;
             padding: 20px;
             border-radius: 8px;
+            width: 45%;
         }
 
         .review-box label {
@@ -132,9 +169,10 @@
             text-align: center;
             background-color: #F4F9F4;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 30%;
         }
-        .product img {
-            width: flex;
+        .product-box img {
+            width: 90%;
             height: auto;
             border-bottom: 1px solid #ddd;
             padding-bottom: 16px;
@@ -154,13 +192,21 @@
 
         }
         .product-box, .review-box {
-            width: 45%; /* 각각의 박스가 부모의 45%를 차지하도록 설정 */
-            margin: 16px; /* 오른쪽에 간격 추가 */
+            margin: 16px;
             padding: 16px;
         }
         .review-type{
             margin-top: 5%;
             text-align: center;
+        }
+        #savedReview{
+            width: 45%;
+        }
+
+        #averageRating {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -168,34 +214,34 @@
     <div class="container"> <!-- 배경 이미지가 적용될 컨테이너 -->
         <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
         <div class="linkusr">
-            <a href="login.html">로그인</a>
-            <a href="signup.html">회원가입</a>
+            <a href="../login.html">로그인</a>
+            <a href="../signup.html">회원가입</a>
         </div>
         <header class="header">
             <div class="logo">
-                <a href="home.html"><img src="logo.png" alt="logo"></a>
+                <a href="../home.html"><img src="../logo.png" alt="logo"></a>
             </div>
         </header>
         <div class="menu">
             <nav class="clearfix">
                 <ul class="clearfix">
-                    <li id = "li1"><a id = "list1" href="guide.html">초보집사 가이드</a>
+                    <li id = "li1"><a id = "list1" href="../guide.html">초보집사 가이드</a>
                         <ul class="sub-menu">
-                            <li id = "uf1"><a href="dguide.html">강아지 가이드</a></li>
-                            <li id = "uf2"><a href="cguide.html">고양이 가이드</a></li>
-                            <li id = "uf3"><a href="oguide.html">기타 동물 가이드</a></li>
+                            <li id = "uf1"><a href="../dguide.html">강아지 가이드</a></li>
+                            <li id = "uf2"><a href="../cguide.html">고양이 가이드</a></li>
+                            <li id = "uf3"><a href="../oguide.html">기타 동물 가이드</a></li>
                         </ul>
                     </li>
-                    <li id = "li2"><a id = "list2" href="shophome.html">반려동물 생활용품</a>
+                    <li id = "li2"><a id = "list2" href="../shophome.html">반려동물 생활용품</a>
                         <ul class="sub-menu">
-                            <li id = "uf4"><a href="foodshop.html">사료</a></li>
-                            <li id = "uf5"><a href="toyshop.html">장난감</a></li>
-                            <li id = "uf6"><a href="shopelse.html">기타 생활 용품</a></li>
+                            <li id = "uf4"><a href="../foodshop.html">사료</a></li>
+                            <li id = "uf5"><a href="../toyshop.html">장난감</a></li>
+                            <li id = "uf6"><a href="../shopelse.html">기타 생활 용품</a></li>
                         </ul>
                     </li>
-                    <li id = "li3"><a id = "list3" href="care.html">반려동물 건강관리</a>
+                    <li id = "li3"><a id = "list3" href="../care.html">반려동물 건강관리</a>
                         <ul class="sub-menu">
-                            <li id = "uf7"><a href="deepcare.html">상세 관리</a></li>
+                            <li id = "uf7"><a href="../deepcare.html">상세 관리</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -208,26 +254,29 @@
             <!--상품 설명----------------------------------->
             <div class="product-box">
                 
-                    <img src="고양이 사료 예시 1.png" alt="상품 이미지">
+                    <img src="../review_img/food3.png" alt="상품 이미지">
                     <div class="product-description">
-                        <h2>하림펫푸드 더리얼 캣 그레인프리 크런치 닭고기 어덜트 건식사료, 닭 1.6kg</h2>
-                        <p>가격: 30,000원</p>
-                        <p>100% 휴먼그레이드 그레인프리 제품으로 생후 1년 이상의 건강한 성년기 고양이를 위한 최적의 영양소 배합과 탁월한 기호성을 고려한 영양맞춤 펫푸드</p>
-                    
+                        <div id="averageRating"></div>
+                        <h2>[강아지]페페로니 반려견간식 오메가3 져키 연어 180g + 소고시 180g 1세트</h2>
+                        <p>가격: 12000원</p>
+                        <p>페페로니 진짜 오메가3 시리즈 강아지에게 좋은 원료 오메가3, 연어오일, 글루코사민, L-라이신 첨가</p>
                 </div>
             </div>
             <!--리뷰------------------------->
             <div class="review-box">
-                <h2>Write a Product Review</h2>
-    
+                <!--<h2>Write a Product Review</h2>--->
+
                 <form id="review_form" onsubmit="saveReview(); return false;">
-                    <label for="product_name">Product Name:</label><br>
+                    
+                    <h2>Review를 작성해주세요</h2>
+                      
+                    <label for="product_name">Name:</label><br>
                     <input type="text" id="product_name" name="product_name" required><br>
                     
                     <label for="email">Email:</label><br>
                     <input type="email" id="email" name="email" required><br>
                     
-                    <label for="rating">Rating:</label><br>
+                    <label for="rating">Score:</label><br>
                     <select id="rating" name="rating" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -239,11 +288,13 @@
                     <label for="review">Review:</label><br>
                     <textarea id="review" name="review" rows="4" required></textarea><br>
                     
-                    <button type="submit">Submit Review</button>
+                    <button type="submit">Review 저장</button>
                 </form>
-    
+        
                 <div id="savedReview"></div>
-            </div>
+                
+            </div>   
+               
         </div>
     </div>
 </body>
