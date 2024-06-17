@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script>
+        // 평균 평점을 표시하는 함수
+        function displayAverageRating(i) {
+            const averageRating = localStorage.getItem(`averageRatingFood-${i}`);
+            if (averageRating) {
+                return parseFloat(averageRating);
+            } else {
+                return null;
+            }
+        }
+
+        // HTML을 삽입하는 함수
+        function insertHtml(element, rank, rating) {
+            element.innerHTML = `
+                <div class="rank"><h3>Rank ${rank}</h3></div>
+                <div class="rating">Average Rating: ${rating}</div>
+            `;
+        }
+
+        // 페이지 로드 시 평균 평점 표시
+        window.onload = function() {
+            const ratings = [];
+            
+            // 각 요소에 대해 평균 평점을 가져옴
+            for (let i = 1; i <= 5; i++) {
+                const rating = displayAverageRating(i);
+                if (rating !== null) {
+                    ratings.push({ id: i, rating: rating });
+                }
+            }
+
+            // 결과값을 내림차순으로 정렬
+            ratings.sort((a, b) => b.rating - a.rating);
+
+            // 정렬된 결과값을 각 요소에 표시
+            ratings.forEach((item, index) => {
+                const element = document.getElementById(`averageRatingFood-${item.id}`);
+                insertHtml(element, index + 1, item.rating);
+            });
+
+            // 평점이 없는 경우 처리
+            for (let i = 1; i <= 5; i++) {
+                if (!ratings.some(item => item.id === i)) {
+                    const element = document.getElementById(`averageRatingFood-${i}`);
+                    element.innerHTML = 'No average rating available.';
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body{
+            overflow-y: auto; /* 세로 방향으로 스크롤이 생기도록 설정 */
+        }
+        .review-select-box {
+            background-color: rgba(175, 212, 133, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            border-radius: 16px;
+        }
+        .review-select {
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        .review-select-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .product-review {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 가운데 정렬 */
+        }
+        .product-review img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product-review h3 {
+            margin: 10px 0 5px;
+        }
+        .product-review p {
+            margin: 0 0 10px;
+            color: #333;
+        }
+        .product-review button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #7CAE7A;
+            color: #fff;
+            cursor: pointer;
+        }
+        .product-review button:hover {
+            background-color: #7CAE7A;
+        }
+        .review-type{
+            margin-top: 5%;
+            text-align: center;
+        }
+
+        .product-review-element {
+            width: 100%; /* 원하는 너비 설정 */
+            text-align: center; /* 텍스트 가운데 정렬 */
+            margin-top: auto; /* 나머지 공간을 모두 위쪽에 배분 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> <!-- 배경 이미지가 적용될 컨테이너 -->
+        <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
+        <div class="linkusr">
+            <a href="login.html">로그인</a>
+            <a href="signup.html">회원가입</a>
+        </div>
+        <header class="header">
+            <div class="logo">
+                <a href="home.html"><img src="logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id = "li1"><a id = "list1" href="guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id = "uf1"><a href="dguide.html">강아지 가이드</a></li>
+                            <li id = "uf2"><a href="cguide.html">고양이 가이드</a></li>
+                            <li id = "uf3"><a href="oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id = "li2"><a id = "list2" href="shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id = "uf4"><a href="foodshop.html">사료</a></li>
+                            <li id = "uf5"><a href="toyshop.html">장난감</a></li>
+                            <li id = "uf6"><a href="shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id = "li3"><a id = "list3" href="care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id = "uf7"><a href="deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!--리뷰-->
+        <div class="review-type">
+            <h1>FOOD Review</h1>
+        </div>
+        <div class="review-select-box">
+            <div class="review-select">
+                <div class="review-select-grid">
+                    <div class="product-review">  
+                        <div id="averageRatingFood-1"></div>
+                        <img src="review_img/food1.png" alt="제품 1">
+                        <div class="product-review-element">
+                            <h3>제품 1</h3>
+                            <p>₩10,000</p>
+                            <button onclick="location.href='reviewfood-1.html'">Review 보기</button>
+                        </div>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingFood-2"></div>
+                        <img src="review_img/food2.png" alt="제품 2">
+
+                        <div class="product-review-element">
+                            <h3>제품 2</h3>
+                            <p>₩20,000</p>
+                            <button onclick="location.href='reviewfood-1.html'">Review 보기</button>
+                        </div>
+                    </div>
+                    <div class="product-review">
+                        <img src="고양이 사료 예시 1.png" alt="제품 3">
+                        <h3>제품 3</h3>
+                        <div id="averageRatingFood-3"></div>
+                        <p>₩30,000</p>
+                        <button>Review 보기</button>
+                    </div>
+                    <div class="product-review">
+                        <img src="고양이 사료 예시 1.png" alt="제품 4">
+                        <h3>제품 4</h3>
+                        <div id="averageRatingFood-4"></div>
+                        <p>₩40,000</p>
+                        <button>Review 보기</button>
+                    </div>
+                    <div class="product-review">
+                        <img src="고양이 사료 예시 1.png" alt="제품 5">
+                        <h3>제품 5</h3>
+                        <div id="averageRatingFood-5"></div>
+                        <p>₩50,000</p>
+                        <button>Review 보기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
