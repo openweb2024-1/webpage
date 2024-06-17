@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY</title>
+    <link rel="stylesheet" href="../home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script>
+        // 리뷰를 로컬 스토리지에 저장하는 함수
+        function saveReview() {
+            const product_name = document.getElementById('product_name').value;
+            const email = document.getElementById('email').value;
+            const rating = document.getElementById('rating').value;
+            const review = document.getElementById('review').value;
+            
+            const reviewData = { product_name, email, rating, review };
+            
+            // 기존 리뷰 배열을 가져옴
+            let reviewtoy_3 = JSON.parse(localStorage.getItem('reviewtoy_3')) || [];
+            // 새로운 리뷰를 배열에 추가
+            reviewtoy_3.push(reviewData);
+            // 로컬 스토리지에 저장
+            localStorage.setItem('reviewtoy_3', JSON.stringify(reviewtoy_3));
+
+            // 폼 제출 후 리뷰를 바로 보여주기
+            showReviews();
+            // 폼 초기화
+            document.getElementById('review_form').reset();
+        }
+
+        // 로컬 스토리지에서 모든 리뷰를 불러와 보여주는 함수
+        function showReviews() {
+            const reviewtoy_3 = JSON.parse(localStorage.getItem('reviewtoy_3')) || [];
+            const savedReviewDiv = document.getElementById('savedReview');
+            savedReviewDiv.innerHTML = '<h3>Reviews</h3>';
+            reviewtoy_3.forEach((review, index) => {
+                savedReviewDiv.innerHTML += `
+                    <div class="review">
+                        <p><strong>Name:</strong> ${review.product_name}</p>
+                        <p><strong>Email:</strong> ${review.email}</p>
+                        <p><strong>Score:</strong> ${review.rating}</p>
+                        <p><strong>Review:</strong> ${review.review}</p>
+                    </div>
+                    <hr>
+                `;
+            });
+            // 평균 평점 계산 및 표시
+            showAverageRating(reviewtoy_3);
+        }
+
+        // 페이지 로드 시 저장된 리뷰 보여주기
+        window.onload = function() {
+            showReviews();
+        };
+        // 평균 평점을 계산하고 표시하는 함수
+        function showAverageRating(reviewtoy_3) {
+            const totalReviews = reviewtoy_3.length;
+            if (totalReviews > 0) {
+                const totalRating = reviewtoy_3.reduce((sum, review) => sum + parseFloat(review.rating), 0);
+                const averageRating = (totalRating / totalReviews).toFixed(2);
+                document.getElementById('averageRating').innerText = `평점 평균: ${averageRating}`;
+                // 평균 평점을 로컬 스토리지에 저장
+                saveAverageRating(averageRating);
+            } else {
+                document.getElementById('averageRating').innerText = '작성된 리뷰 없음';
+                // 리뷰가 없을 경우 로컬 스토리지에서 평균 평점 제거
+                localStorage.removeItem('averageRating');
+            }
+        }
+
+        // 평균 평점을 로컬 스토리지에 저장하는 함수
+        function saveAverageRating(averageRating) {
+            localStorage.setItem('averageRatingToy-3', averageRating);
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            min-height: 100vh; /* 뷰포트 높이의 100% */
+            overflow-y: auto; /* 세로 방향으로 스크롤이 생기도록 설정 */
+        }
+        
+        .review-box {
+            font-family: Arial, sans-serif;
+            background-color: #F4F9F4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 60%;
+            /*리뷰 입력과 리뷰 가로로 배치하기 위함*/
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .review-box h2 {
+            color: #333;
+        }
+
+        .review-box form {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            width: 45%;
+        }
+
+        .review-box label {
+            color: #555;
+        }
+
+        .review-box input[type="text"],
+        .review-box input[type="email"],
+        .review-box select,
+        .review-box textarea {
+            width: calc(100% - 22px); /* padding과 border를 고려한 너비 조정 */
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .review-box input[type="text"]:focus,
+        .review-box input[type="email"]:focus,
+        .review-box select:focus,
+        .review-box textarea:focus {
+            border-color: #AFD485;
+        }
+
+        .review-box button {
+            width: 100%;
+            background-color: #AFD485;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .review-box button:hover {
+            background-color: #9EC276;
+        }
+
+        .review-box #savedReview {
+            margin-top: 20px;
+        }
+
+        .review-box #savedReview h3 {
+            color: #333;
+        }
+
+        .review-box #savedReview p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+    /*상품 설명 css*/
+        .product-box {
+            /*border: 1px solid #ddd;*/
+            border-radius: 8px;
+            text-align: center;
+            background-color: #F4F9F4;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 30%;
+        }
+        .product-box img {
+            width: 90%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+        }
+        .product-description {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(175, 212, 133, 0.5);  /*0.5는 50% 투명도를 의미 */
+            /*background-color: rgba(0,0,0,0.3);*/
+            border-radius: 16px;
+
+        }
+        .product-box, .review-box {
+            margin: 16px;
+            padding: 16px;
+        }
+        .review-type{
+            margin-top: 5%;
+            text-align: center;
+        }
+        #savedReview{
+            width: 45%;
+        }
+
+        #averageRating {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> <!-- 배경 이미지가 적용될 컨테이너 -->
+        <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
+        <div class="linkusr">
+            <a href="../login.html">로그인</a>
+            <a href="../signup.html">회원가입</a>
+        </div>
+        <header class="header">
+            <div class="logo">
+                <a href="../home.html"><img src="../logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id = "li1"><a id = "list1" href="../guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id = "uf1"><a href="../dguide.html">강아지 가이드</a></li>
+                            <li id = "uf2"><a href="../cguide.html">고양이 가이드</a></li>
+                            <li id = "uf3"><a href="../oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id = "li2"><a id = "list2" href="../shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id = "uf4"><a href="../foodshop.html">사료</a></li>
+                            <li id = "uf5"><a href="../toyshop.html">장난감</a></li>
+                            <li id = "uf6"><a href="../shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id = "li3"><a id = "list3" href="../care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id = "uf7"><a href="../deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="review-type">
+            <h1>TOY Review</h1>
+        </div>
+        <div class="main-content">
+            <!--상품 설명----------------------------------->
+            <div class="product-box">
+                <img src="../review_img/toy3.png" alt="상품 이미지">
+                <div class="product-description">
+                    <div id="averageRating"></div>
+                    <h2>[강아지] 리스펫 강아지 장난감 파스텔러버 로프 6종세트</h2>
+                    <p>가격: 9,990원</p>
+                    <p>구강관리, 노즈워크, 터그놀이를 한번에! 만병의 근원이 되는 마음의 질병을 예방할 수 있는 가장 간단한 방법은 보호자의 케어 입니다. 파스텔러버 로프 6종세트로 케어하세요!</p>
+                </div>
+            </div>
+            <!--리뷰------------------------->
+            <div class="review-box">
+                <!--<h2>Write a Product Review</h2>--->
+
+                <form id="review_form" onsubmit="saveReview(); return false;">
+                    
+                    <h2>Review를 작성해주세요</h2>
+                      
+                    <label for="product_name">Name:</label><br>
+                    <input type="text" id="product_name" name="product_name" required><br>
+                    
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br>
+                    
+                    <label for="rating">Score:</label><br>
+                    <select id="rating" name="rating" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select><br>
+                    
+                    <label for="review">Review:</label><br>
+                    <textarea id="review" name="review" rows="4" required></textarea><br>
+                    
+                    <button type="submit">Review 저장</button>
+                </form>
+        
+                <div id="savedReview"></div>
+                
+            </div>   
+               
+        </div>
+    </div>
+</body>
+</html>
