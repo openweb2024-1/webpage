@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY</title>
+    <link rel="stylesheet" href="home.css">
+    <meta charset="utf8">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-y: scroll; /* 전체 페이지에 대한 스크롤 활성화 */
+    }
+
+    #h {
+        font-family: "Noto Sans KR", sans-serif;
+        color: #AFD485;
+        text-shadow: 0 1.2px 1.5px rgba(0,0,0,0.4);
+    }
+
+    .container {
+        background-image: url('back3.png'); /* 상대 경로로 배경 이미지 설정 */
+        padding-bottom: 55vh; /* 하단 여백 추가 */
+    }
+
+    .board {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #f4f7f6; /* 배경을 밝은 색으로 설정하여 #AFD485 색상과 대비 */
+        padding: 10vh 5vh; /* 패딩 증가 */
+        display: flex;
+        flex-direction: column; /* 세로로 정렬 */
+        justify-content: flex-start; /* 상단에서 정렬 */
+        align-items: center; /* 세로 정렬 시 가운데 정렬 */
+        border-radius: 15px;
+    }
+
+    .post {
+        background-color: rgba(175, 212, 133, 0.1); /* 반투명 흰색 배경 */
+        border-radius: 10px;
+        background-color: #ffffff; /* 로그인 박스 배경 */
+        padding: 20px; /* 패딩 증가 */
+        border-radius: 11px; /* 모서리 둥글게 */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 추가 */
+        margin-bottom: 20px;
+        width: 80%; /* 박스 너비 설정 */
+        display: flex; /* 세로로 정렬하기 위해 flex로 설정 */
+        flex-direction: column; /* 세로로 정렬 */
+        cursor: pointer; /* 마우스를 올리면 포인터로 변경 */
+        text-decoration: none; /* 링크 밑줄 제거 */
+        color: inherit; /* 링크 색상을 기본 색상으로 설정 */
+    }
+
+    .post:hover {
+        background-color: rgb(124, 174, 122, 0.1); /* 호버 시 배경색 변경 */
+    }
+
+    .post-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .post-content {
+        font-size: 14px;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0px 0 40px;
+    }
+
+    #searchBar {
+        width: 450px; /* 너비 조정 */
+        padding: 13px; /* 패딩 조정 */
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px; /* 더 둥글게 */
+        outline: none; /* 포커스 시 테두리 제거 */
+        margin: 10px 0 30px;
+    }
+
+    #searchBar::placeholder {
+        color: #aaa; /* 플레이스홀더 텍스트 색상 */
+    }
+
+    #searchBtn {
+        background-color: #AFD485; /* 버튼 배경색 */
+        color: white; /* 버튼 텍스트 색상 */
+        border: none; /* 테두리 없음 */
+        padding: 12px 20px; /* 패딩 설정 */
+        margin-left: 10px; /* 왼쪽 여백 */
+        border-radius: 3px; /* 둥글게 */
+        cursor: pointer; /* 포인터 커서 */
+        margin: 10px 10px 30px;
+    }
+
+    #searchBtn:hover {
+        background-color: #7EAE7A; /* 호버 시 배경색 변경 */
+    }
+
+</style>
+
+<body>
+
+    <!-- 모달 창 코드 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-title" class="post-title">
+                <!-- 모달에서 동적으로 제목이 바뀔 부분 -->
+            </div>
+            <div id="modal-content" class="post-content">
+                <!-- 모달에서 동적으로 내용이 바뀔 부분 -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container"> <!-- 배경 이미지가 적용될 컨테이너 -->
+        <div class="overlay"></div> <!-- 검은색 반투명 레이어 -->
+        <header class="header">
+            <div class="logo">
+                <a href="home.html"><img src="logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id="li1"><a id="list1" href="guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id="uf1"><a href="dguide.html">강아지 가이드</a></li>
+                            <li id="uf2"><a href="cguide.html">고양이 가이드</a></li>
+                            <li id="uf3"><a href="oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id="li2"><a id="list2" href="shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id="uf4"><a href="foodshop.html">사료</a></li>
+                            <li id="uf5"><a href="toyshop.html">장난감</a></li>
+                            <li id="uf6"><a href="shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id="li3"><a id="list3" href="care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id="uf7"><a href="deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="board">
+            <h1 id="h">기타 동물 가이드</h1>
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="원하는 동물을 입력하세요...">
+                <button id="searchBtn" onclick="searchPosts()">검색</button>
+            </div>
+
+            <!-- 새에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('새', `
+                (1) 새의 품종 선택<br>
+                새를 키우기 전에 어떤 종류의 새를 키울 것인지 선택해야 합니다. 일반적으로 집 안에서 키우는 새는 약 30여 종류 정도 됩니다. 새의 품종은 그들의 특성과 케어 방법에 큰 영향을 미치게 됩니다.<br><br>
+                
+                (2) 적절한 새장과 배치<br>
+                새장의 크기와 위치는 새의 건강과 행복에 매우 중요한 요소인데요. 행동반경에 포함되는 충분한 공간과 자연적인 환경을 조성하여 제공해야 하며, 또한 새장을 높이 배치하거나 적절한 온도, 습도가 유지될 수 있는 조건을 만들어 주어야 합니다.<br><br>
+                
+                (3) 올바른 사료 선택<br>
+                올바른 사료를 선택하여 새의 영양소 요구를 충족해야 합니다. 새의 종류와 나이에 따라 사료의 종류와 양이 다릅니다.<br><br>
+                
+                (4) 깨끗한 물과 음식 제공<br>
+                새에겐 깨끗하고 신선한 물과 음식이 필요합니다. 물에 먹이나 오염물질이 섞이면 새가 건강상 문제를 겪을 수 있으므로, 물을 교환하는 빈도를 높이는 것이 좋습니다. 그리고 사료의 신선도나 기한에 신경 써서 잘못된 음식 섭취하지 못하도록 케어해줘야 합니다.<br><br>
+                
+                
+            `)">
+                <div class="post-title">
+                    새 알아보기
+                </div>
+                <div class="post-content">
+                    새에 대한 정보를 제공합니다
+                </div>
+            </a>
+
+
+            <!-- 토끼에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('토끼', `
+                (1) 토끼의 사육환경 조성<br>
+                토끼의 건강과 행복을 위해서는 적절한 사육환경이 중요해요. 충분한 공간을 제공하고, 토끼의 활동을 도와주는 운동장과 장난감, 그리고 안전한 토끼용 집을 마련해야 하는데요. 또한 적절한 온도와 습도를 유지하여 건강한 환경을 유지해야 하는데 사람과는 다소 다르기 때문에 토끼만을 위한 공간조성이 필요합니다.<br><br>
+
+                (2) 토끼의 사료와 먹이<br>
+                초식동물인 토끼는 건강한 생활을 위해서 적절한 사료와 먹이가 필요합니다. 대부분의 토끼는 건초를 주식으로 먹이를 공급하는 것이 좋고 채소와 과일을 적절한 비율로 섞어주며, 토끼용 사료는 건강한 성장에 도움을 주고 있어요. 토끼의 식사는 건강에 큰 영향을 미치기 때문에, 토끼에게 맞는 사료와 먹이를 선택해 주세요.<br><br>
+
+                (3) 토끼의 행동 및 교육<br>
+                토끼는 활발하고 호기심이 많은 동물이기 때문에, 놀기 좋은 운동장을 만들어 주고 장난감도 주어서 행복한 삶을 보낼 수 있도록 도와주어야 해요. 또한 토끼의 잘못된 행동을 예방하기 위해서는 적절한 훈련과 교육이 필요합니다.<br><br>
+                                
+            `)">
+                <div class="post-title">
+                    토끼 알아보기
+                </div>
+                <div class="post-content">
+                    토끼에 대한 정보를 제공합니다
+                </div>
+            </a>
+
+
+            <!-- 햄스터에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('햄스터', `
+                (1) 햄스터의 사육장 세팅<br>
+                사육장에는 우드칩이나 목초, 혹은 종이 등의 바닥재를 깔아주며, 햄스터가 마음 편히 은신하여 잠들 수 있는 은신처(집)을 설치해 주는 것이 좋습니다. 사육장은 집안의 조용한 구석이 좋으며, 햇볕이 닿지 않고 온도변화가 적은 자리가 좋습니다.<br><br>
+
+                (2) 햄스터와 스킨십<br>
+                처음 입양시에는 집의 조용한 공간에 사육장을 놓고 최소 3일 간은 만지지 말고 먹이와 물 정도만 바꿔주며 최소한의 관리를 하는 것이 좋습니다. 약 5~7일이 지난 후 케이지 너머에서 먹이를 주기 시작하며 2주 정도 지난 후에 조금씩 스킨십을 시도해 보는 것이 좋습니다.<br><br>
+
+                (3) 햄스터의 먹이<br>
+                먹이는 하루에 1회 저녁시간대에 햄스터 체중의 5~10% 정도의 햄스터 전용 사료를 줄 수 있어요. 물은 언제든 신선한 물을 마실 수 있도록 매일 바꿔주는 것이 좋습니다.<br><br>
+                                
+            `)">
+
+                <div class="post-title">
+                    햄스터 알아보기
+                </div>
+                <div class="post-content">
+                    햄스터에 대한 정보를 제공합니다
+                </div>
+            </a>
+
+
+            <!-- 뱀에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('뱀', `
+                (1) 뱀의 품종 선택<br>
+                뱀을 반려동물로서 키우기 위해서는 적절한 뱀 품종을 선택하는 것이 무엇보다 중요합니다. 크기, 기질 및 관리 요구 사항과 같은 요소를 고려하고 내가 키울 만한 환경을 제공할 수 있는지 많은 고민을 해봐야 하고 요즘 인기 있는 반려동물 뱀 종류로는 볼 파이슨, 콘스네이크, 혼듀란 밀크스네이크가 있습니다.<br><br>
+
+                (2) 뱀의 거주지<br>
+                케이지가 필요한 뱀은 내 집 같이 편안한 적절한 서식지를 만드는 것이 뱀의 건강과 수명에 매우 중요합니다. 적절한 환기, 온도 구배 및 은신처가 있는 안전한 인클로저가 필요하고요. 사시나무 침구 또는 파충류 카펫과 같이 뱀의 자연환경을 모방한 환경을 조성해 주어야 합니다.<br><br>
+
+                (3) 뱀의 먹이<br>
+                뱀에게 균형 잡힌 식단을 제공하는 것은 뱀의 성장과 활력에 매우 중요한데요. 뱀은 일반적으로 크기에 따라 생쥐나 쥐와 같은 설치류를 먹지만 뱀마다의 크기에 따라 조금씩 달라집니다. 자신이 먹을 수 있는 크기의 소형 포유류 위주의 식사를 하는데 작은 병아리나 새, 메추리도 먹을 수 있습니다.<br><br>
+                                
+            `)">
+                <div class="post-title">
+                    뱀 알아보기
+                </div>
+                <div class="post-content">
+                    뱀에 대한 정보를 제공합니다
+                </div>
+            </a>
+
+
+            <!-- 미어캣에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('미어캣', `
+                (1) 미어캣의 사육환경 조성<br>
+                미어캣은 동굴에서 생활하는 습성이 있지만, 활동성이 높기 때문에 케이지에 넣어두고 키우시는 것보다 풀어두고 키우시는 편이 좋은데요. 미어캣을 케이지에 키우게 되면 답답해하며 스트레스를 받을 수 있습니다.<br><br>
+
+                (2) 미어캣의 먹이<br>
+                미어캣을 고양이와 같이 타우린이 필요하기 때문에, 고양이 사료를 급여해주면 됩니다. 곤충을 잡아먹는 동물로 작은 곤충이나 밀웜을 급여해 주셔도 좋습니다. 미어캣은 잡식성으로 과일과 야채도 먹어도 되지만, 양파류나 마늘, 포도, 아보카도 등 강아지나 고양이가 먹으면 안 되는 음식들은 절대 급여하시면 안 됩니다.<br><br>
+
+                (3) 미어캣 사육 시 주의사항<br>
+                미어캣은 외로움을 잘 타는 동물로 무리생활을 하는 동물이기 때문에, 꼭 2마리 이상 같이 키워주시거나 외롭지 않도록 신경써주셔야 합니다.<br><br>
+                                
+            `)">
+                <div class="post-title">
+                    미어캣 알아보기
+                </div>
+                <div class="post-content">
+                    미어캣에 대한 정보를 제공합니다
+                </div>
+            </a>
+
+
+            <!-- 미니돼지에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('미니돼지', `
+                (1) 미니돼지의 성격<br>
+                미니돼지는 지능이 높고 깨끗한 동물입니다. 사람도 정말 좋아하고 낯가림도 없이 잘 따릅니다. 새끼 때는 겁이 좀 많지만, 어느 정도 시간이 지나면 주인이 앉아있으면 무릎 위에 올라오기도 하는 등 애교가 많은 동물이에요. 지능이 높아 룬련을 잘 시킨다면 강아지처럼 간단한 개인기도 할 수 있답니다.<br><br>
+
+                (2) 미니돼지 사육 전 준비물<br>
+                미니돼지를 사육하기 전 사육장, 먹이, 밥그릇, 물그릇, 바닥재, 장난감, 화장실 등의 용품이 필요합니다. 앞에서도 말했듯 돼지들은 청결한 동물이기 때문에 화장실과 잠자리를 분리해주는 것이 좋습니다. 그리고 돼지 사육장은 구하기 쉽지 않기 때문에 강아지용 사육장을 사용하시면 됩니다. 밥그릇, 물그릇도 마찬가지입니다.<br><br>
+
+                (3) 미니돼지와 산책<br>
+                산책은 필수는 아니지만, 시켜주는 것이 좋습니다. 섭취량이 많기 때문에 자칫 비만이 되지 않도록 꾸준히 산책을 가는 것이 좋습니다. 산책 시간은 20분에서 40분 정도면 적당합니다. 돼지들을 땅에 흙을 코로 들쑤시는 습성이 있는데 산책을 가서 흙이나 모래로 장난칠 수 있게 해주면 매우 좋아합니다.<br><br>
+                                
+            `)">
+                <div class="post-title">
+                    미니돼지 알아보기
+                </div>
+                <div class="post-content">
+                    미니돼지에 대한 정보를 제공합니다
+                </div>
+            </a>
+
+
+            <!-- 앵무새에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('앵무새', `
+                (1) 앵무새의 품종 선택<br>
+                대부분 잉꼬, 모란앵무, 왕관앵무, 코뉴어 종을 대중적으로 가정에서 많이 키우는데요. 코뉴어는 분양가가 30만원 이상은 나가기 때문에 처음 키우기엔 부담이 있을 수 있으며, 왕관 앵무는 소형종 중에서는 말을 잘하지만 파우더(비듬)이 날리는 단점이 있습니다. 그래서 귀여운 외모, 저렴한 분양가, 튼튼한 체질로 인해 키우기가 수월한 모란앵무를 초보자에게 많이 추천합니다.<br><br>
+
+                (2) 앵무새 사육 전 준비물<br>
+                앵무새를 사육하기 전 새장(날림장), 횟대, 장난감, 배변패드, 사료, 간식, 침대 등이 필요합니다. 새장은 둥근 새장보다 사각형 새장이 공간 활용에 좋고, 제일 높은 곳에 있으려는 습성이 있기 때문에 가로로 긴 날림장을 구매하는 것이 좋아요.<br><br>
+
+                (3) 앵무새 사육 시 주의사항<br>
+                앵무새는 지능이 높은 동물입니다. 자기에게 위협을 가한 사람을 다 기억하고, 감수성도 예민하고 지루함을 느낄 수 있기 때문에 강아지처럼 놀아줘야 합니다. 앵무새는 잘 안 놀아주면 스트레스를 받아서 자기 털을 다 뽑는 자해를 할 수도 있으니, 잘 놀아주세요.<br><br>
+                                
+            `)">
+                <div class="post-title">
+                    앵무새 알아보기
+                </div>
+                <div class="post-content">
+                    앵무새에 대한 정보를 제공합니다
+                </div>
+            </a>
+
+
+            <!-- 앵무새에 대한 포스트 -->
+            <a href="#" class="post" onclick="openModal('고슴도치', `
+                (1) 고슴도치의 먹이<br>
+                고슴도치는 잡식성 동물로 야생에서의 고슴도치 먹이는 개구리, 지렁이, 곤충, 달팽이, 버섯류, 과일 등을 다 잘 먹는 편입니다. 전용 사료를 먹이로 급여할 수도 있는데요. 주로 소동물 펫샵이나 인터넷몰에서 쉽게 구입이 가능하며, 해당 사료를 주식으로 급여하며 됩니다. 간식으로 종종 닭고기나 밀웜, 당근, 양배추 등을 소량 주는 것도 괜찮습니다.<br><br>
+
+                (2) 고슴도치의 수명<br>
+                야생에서의 고슴도치 수명은 약 3년 전후, 실내에서 사육하는 환경에서의 경우엔 보통 5년 전후로 알려져 있습니다. 좋은 환경에서 스트레스를 받지 않고 정성껏 키워지는 경우엔 8년 이상 사는 모습도 보인답니다. 하지만 고슴도치는 스트레스에 취약하고 예민한 성격을 가지고 있으므로 조심해야 합니다.<br><br>
+
+                (3) 고슴도치의 사육장<br>
+                고슴도치는 활발한 동물로 사육장의 크기는 한 마리 기준 최소 90cm x 60cm 이상의 크기를 권장합니다. 사육장은 클수록 좋으므로 처음부터 큰 고슴도치 집을 선택해주는 것이 좋으며, 집 안에 반드시 쳇바퀴와 은신처, 바닥재 등을 설치해줘야 합니다.<br><br>
+                                
+            `)">
+                <div class="post-title">
+                    고슴도치 알아보기
+                </div>
+                <div class="post-content">
+                    고슴도치에 대한 정보를 제공합니다
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function searchPosts() {
+        let filter = document.getElementById('searchBar').value.toLowerCase();
+        let posts = document.querySelectorAll('.post');
+        
+        posts.forEach(function(post) {
+            let title = post.querySelector('.post-title').textContent.toLowerCase();
+            let content = post.querySelector('.post-content').textContent.toLowerCase();
+            if (title.includes(filter) || content.includes(filter)) {
+                post.style.display = '';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    }
+
+    let scrollPosition = 0;
+
+function openModal(title, content) {
+    // 현재 스크롤 위치 저장
+    scrollPosition = window.pageYOffset;
+
+    // 모달 창 콘텐츠 업데이트
+    document.getElementById("modal-title").innerHTML = title;
+    document.getElementById("modal-content").innerHTML = content;
+
+    // body 스크롤 비활성화 및 현재 스크롤 위치 고정
+    let scrollbarWidth = window.innerWidth - document.body.clientWidth; // 스크롤 바 너비 계산
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = `calc(100% - ${scrollbarWidth}px)`;
+    document.body.style.top = `-${scrollPosition}px`;
+
+    // 모달 창 display 변경
+    document.getElementById("myModal").style.display = "block";
+}
+
+function closeModal() {
+    // 모달 창 display 변경
+    document.getElementById("myModal").style.display = "none";
+
+    // body 스크롤 활성화 및 저장된 스크롤 위치로 복원
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollPosition);
+}
+
+    
+</script>
+
+<style>
+    /* 모달 전체 스타일 */
+    .modal {
+        display: none; /* 초기에는 숨김 */
+        position: fixed; /* 페이지에 고정 */
+        z-index: 1000; /* 다른 요소들보다 위에 표시 */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.3); /* 반투명 배경 */
+        backdrop-filter: blur(5px);
+    }
+
+    /* 모달 콘텐츠 스타일 */
+    .modal-content {
+        background-color: rgba(254, 254, 254, 0.9); /* 모달 창 배경색 */
+        margin: 10% auto; /* 중앙 정렬 */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%; /* 모달 너비 */
+        height: 550px;
+        border-radius: 10px;
+        box-shadow: 0 4px 9px rgba(0,0,0,0.2);
+        position: relative;
+        text-align: left;
+    }
+
+    /* 모달 닫기 버튼 스타일 */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #modal-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    #modal-content {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+</style>

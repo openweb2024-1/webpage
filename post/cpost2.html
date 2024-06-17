@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY - 게시물</title>
+    <link rel="stylesheet" href="../home.css">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-y: scroll;
+    }
+
+    #h {
+        font-family: "Noto Sans KR", sans-serif;
+        color: #AFD485;
+        text-shadow: 0 1.2px 1.5px rgba(0,0,0,0.4);
+    }
+
+    .container {
+        padding-bottom: 196vh;
+        background-image: url('back3.png'); /* 상대 경로로 배경 이미지 설정 */
+    }
+
+    .board {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #f4f7f6;
+        padding: 12vh 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 15px;
+        margin: 0 auto;
+    }
+
+    .post {
+        background-color: #fff;
+        padding: 2vh 3vh;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 85%;
+    }
+
+    .post-header {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1vh;
+        margin-bottom: 2vh;
+    }
+
+    .post-title {
+        font-size: 2em;
+        color: #333;
+    }
+
+    .post-meta {
+        font-size: 0.9em;
+        color: #777;
+    }
+
+    .post-content {
+        font-size: 1.0em;
+        color: #555;
+        line-height: 1.9;
+    }
+
+    .post-content ol {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+        padding-left: 1em;
+    }
+
+    .post-content ol li {
+        margin-bottom: 10px;
+        text-align: left;
+        text-align: start;
+        position: relative;
+        padding-left: 1.5em;
+    }
+
+    .post-content ol li::before {
+        content: "\2022"; /* Bullet point character */
+        position: absolute;
+        left: 0;
+        color: #AFD485;
+        font-size: 1.2em;
+        line-height: 1.2em;
+    }
+
+    .post-content ol li strong {
+        font-weight: bold;
+    }
+
+    .post-image {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .navigation {
+        margin-top: 3vh;
+        display: flex;
+        justify-content: space-between;
+        width: 28vh;
+    }
+
+    .nav-button {
+        background-color: #AFD485;
+        color: white;
+        padding: 1vh 2vh;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1em;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-button:hover {
+        background-color: rgb(131, 179, 130);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-button.disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="overlay"></div>
+        <header class="header">
+            <div class="logo">
+                <a href="../home.html"><img src="../logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id="li1"><a id="list1" href="../guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id="uf1"><a href="../dguide.html">강아지 가이드</a></li>
+                            <li id="uf2"><a href="../cguide.html">고양이 가이드</a></li>
+                            <li id="uf3"><a href="../oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id="li2"><a id="list2" href="../shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id="uf4"><a href="../foodshop.html">사료</a></li>
+                            <li id="uf5"><a href="../toyshop.html">장난감</a></li>
+                            <li id="uf6"><a href="../shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id="li3"><a id="list3" href="../care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id="uf7"><a href="../deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="board">
+            <div class="post">
+                <div class="post-header">
+                    <h2 class="post-title">배변 유도 및 배변 훈련</h2>
+                    <div class="post-meta">작성자: 관리자 | 작성일: 2024-06-15</div>
+                </div>
+                <img class="post-image" src="../image/cat2.jpg" alt="강아지 훈련">
+                <div class="post-content">
+                    <p>고양이의 특징 중 하나가 용변을 보고 흙이나 모래로 감추는 것입니다. 이는 소변이나 대변 냄새를 통한 흔적을 없애 적이나 다른 고양이로부터 몸을 지키기 위한 고양이의 본능 중 하나라고 하네요.</p>
+                    <p>이처럼 집에서 고양이를 키우기 편한 점 중 하나가 알아서 깔끔하게 뒷정리까지 하는 배변처리인데요, 문제는 모든 고양이가 이렇게 깔끔하게 처리를 하지 못한다는 것입니다. 그리고 새끼 고양이의 경우 배변훈련을 제대로 시켜줘야 아무데나 똥오줌을 싸는 등의 불상사를 막을 수 있지요.</p>
+                    <p>그래서 오늘은 고양이 배변훈련을 완벽하게 할 수 있도록 정리해봤습니다.</p><br>
+                    
+                    <h3>고양이 배변훈련 시기</h3>
+                    <p>고양이는 일정 장소에 배변을 하는 본능이 있어 대부분 태어나서 조금만 지나면 화장실 장소를 잘 기억하게 됩니다. 혹시 입양된 고양이라면 밥 먹고 자고 나면 배변을 보게 되는데요, 혹시 바닥 냄새를 맡거나 긁는 등의 행동을 한다면 이는 화장실을 찾고 있다는 표시임으로 바로 데리고 가서 화장실이 어디인지 인식시켜 주시는 게 좋습니다.</p>
+                    <p>아기 고양이라면 태어나서 3주 정도가 지났을 때 배변훈련을 시작하면 좋습니다. 특히 태어나서 3주까지는 고양이에게 집사들의 많은 관심과 사랑이 필요한 시기이니 더 신경 써서 챙겨주도록 하세요.</p><br>
+                    
+                    <h3>고양이 배변 유도하는 방법</h3>
+                    <p>정상적인 고양이라면 하루 한두 번, 많으면 3번까지도 배변을 한다고 해요. 이번에는 새끼 고양이 배변훈련을 위한 배변 유도 방법을 단계별로 알아보겠습니다.</p>
+                    <ol>
+                        <li>우선 새끼 고양이를 편안하게 배를 받치는 기분으로 부드럽게 잡고 따뜻하게 해줍니다. 고양이들은 체온이 낮아지면 건강을 해칠 수 있으니 적당히 따뜻하게 해주는 게 좋습니다.</li>
+                        <li>따뜻한 물을 적신 수건 등으로 아기 고양이 배와 항문을 자극해줍니다. 원래 어미 고양이들이 혀로 핥아서 배변 유도를 해주는 것과 비슷하게 해주는 것입니다.</li>
+                        <li>항문 주변을 수건으로 부드럽게 계속 자극해줍니다.</li>
+                        <li>대소변을 확인합니다. 아직 고양이가 대소변을 보지 않았다면 계속 2~3번의 과정을 반복합니다.</li>
+                        <li>대변을 한다면 수건의 깨끗한 면 또는 새 수건으로 바꿔가면서 자극을 계속 해줍니다. 분유를 먹는 새끼 고양이의 경우 묽게 변이 나온다면 정상입니다.</li>
+                        <li>배변이 끝났다면 항문 주위를 깨끗이 닦아주고 말려주도록 합니다. 이는 감염 등을 방지하고 위생적으로 도움이 됩니다.</li>
+                    </ol><br>
+                    
+                    <h3>고양이 배변훈련 방법</h3>
+                    <p>고양이가 단시간에 배변훈련을 성공적으로 할 수 있도록 팁을 전해드립니다.</p>
+                    <ol>
+                        <li>화장실은 고양이가 집중할 수 있는 곳에 두세요. 고양이가 혼자 조용히 배변을 볼 수 있는 장소에 고양이 화장실을 준비해두는 게 중요합니다. 사람이 지나다니거나 하면 고양이가 집중할 수 없어요. 따라서 조금 구석진 곳이나 외진 곳에 두고 배변 상태를 체크해주시는 게 좋습니다. 또 환기가 잘 되면 냄새가 잘 빠지니 더 좋겠죠.</li>
+                        <li>고양이 화장실을 두는 장소도 조금씩 바꿔가면서 어느 장소를 제일 좋아하는지 알아보시는 것도 도움이 된답니다.</li>
+                        <li>고양이가 좋아하는 화장실 모래를 빨리 찾는 것이 중요합니다. 빨리 배변훈련을 성공적으로 이끌어내는 것 중에 중요한 포인트가 바로 고양이가 좋아하는 화장실 모래를 찾는 것입니다. 이것저것 써보면서 고양이가 좋아하는 취향을 찾는다면 고양이가 대변 보는 활동을 더 안심하고 즐길 수 있기 때문에 고양이가 마음에 들어 하는 모래가 어떤 것인지 찾는 것이 중요합니다.</li>
+                        <li>배변 실패에도 절대 혼내지 마세요! 혹시 배변을 화장실이 아닌 이불이나 방 바닥 등에 해버리면 집사로서는 짜증이 날 수도 있죠. 하지만 절대 꾸짖거나 화를 내는 건 배변훈련에 도움이 되지 않아요. 화장실을 제대로 찾지 못한다면 제대로 찾을 때까지 인내심을 가지고 데리고 가주도록 하세요. 입양 온 고양이라면 기존의 변을 화장실에 넣어두면 자신의 냄새를 찾아가서 화장실이 여기구나 하고 인지하기 쉬우니 도움이 됩니다.</li>
+                    </ol><br><br>
+                </div>
+            </div>
+            <div class="navigation">
+                <a href="cpost1.html" class="nav-button">이전 게시물</a>
+                <a href="cpost3.html" class="nav-button">다음 게시물</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -139,32 +139,41 @@ li a:hover {
     color: #032807;
     position: absolute;
     z-index: 1;
-    border-radius: 15px;
+    border-radius: 13px;
 }
 
 #li1:hover {
     background-color: #7CAE7A;
+    border-radius: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #list1 #li1:hover {
     color: #FFFFFF;
     font-weight: normal;
     background-color: #7CAE7A; /* 마우스를 올렸을 때 배경색을 어둡게 변경 */
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #li2:hover{
     background-color: #7CAE7A;
+    border-radius: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #list2 #li2:hover{
     color: #FFFFFF;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #li3:hover{
     background-color: #7CAE7A;
+    border-radius: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #list3 #li3:hover{
     color: #FFFFFF;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .sub-menu {
@@ -186,36 +195,43 @@ li a:hover {
     color: #FFD400;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #uf2:hover{
     color: #FFD400;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #uf3:hover{
     color: #FFD400;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #uf4:hover{
     color: #FFD400;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #uf5:hover{
     color: #FFD400;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #uf6:hover{
     color: #FFD400;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 #uf7:hover{
     color: #FFD400;
     font-weight: normal;
     background-color: #7CAE7A;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 li:hover .sub-menu {

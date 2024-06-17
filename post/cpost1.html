@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY - 게시물</title>
+    <link rel="stylesheet" href="../home.css">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-y: scroll;
+    }
+
+    #h {
+        font-family: "Noto Sans KR", sans-serif;
+        color: #AFD485;
+        text-shadow: 0 1.2px 1.5px rgba(0,0,0,0.4);
+    }
+
+    .container {
+        padding-bottom: 172vh;
+        background-image: url('back3.png'); /* 상대 경로로 배경 이미지 설정 */
+    }
+
+    .board {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #f4f7f6;
+        padding: 12vh 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 15px;
+        margin: 0 auto;
+    }
+
+    .post {
+        background-color: #fff;
+        padding: 2vh 3vh;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 85%;
+    }
+
+    .post-header {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1vh;
+        margin-bottom: 2vh;
+    }
+
+    .post-title {
+        font-size: 2em;
+        color: #333;
+    }
+
+    .post-meta {
+        font-size: 0.9em;
+        color: #777;
+    }
+
+    .post-content {
+        font-size: 1.0em;
+        color: #555;
+        line-height: 1.9;
+        text-align: left;
+    }
+
+    .post-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .post-content table, th, td {
+        border: 1px solid #cccccc;
+        padding: 6px;
+        text-align: left;
+        font-size: 15px;
+    }
+
+    .post-content th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    .post-content ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    .post-content ul li {
+        margin-bottom: 10px;
+        text-align: left;
+        text-align: start;
+    }
+
+    .post-content ul li strong {
+        font-weight: bold;
+    }
+
+    .post-content ul li span.source {
+        color: #777;
+        font-size: 0.9em;
+        margin-left: 10px;
+    }
+
+    .post-image {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .navigation {
+        margin-top: 3vh;
+        display: flex;
+        justify-content: space-between;
+        width: 28vh;
+    }
+
+    .nav-button {
+        background-color: #AFD485;
+        color: white;
+        padding: 1vh 2vh;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1em;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-button:hover {
+        background-color: rgb(131, 179, 130);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-button.disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="overlay"></div>
+        <header class="header">
+            <div class="logo">
+                <a href="../home.html"><img src="../logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id="li1"><a id="list1" href="../guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id="uf1"><a href="../dguide.html">강아지 가이드</a></li>
+                            <li id="uf2"><a href="../cguide.html">고양이 가이드</a></li>
+                            <li id="uf3"><a href="../oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id="li2"><a id="list2" href="../shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id="uf4"><a href="../foodshop.html">사료</a></li>
+                            <li id="uf5"><a href="../toyshop.html">장난감</a></li>
+                            <li id="uf6"><a href="../shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id="li3"><a id="list3" href="../care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id="uf7"><a href="../deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="board">
+            <div class="post">
+                <div class="post-header">
+                    <h2 class="post-title">고양이의 생활환경과 행동양식</h2>
+                    <div class="post-meta">작성자: 관리자 | 작성일: 2024-06-15</div>
+                </div>
+                <img class="post-image" src="../image/cat1.jpeg" alt="강아지 훈련">
+                <div class="post-content">
+                    <h2>1. 고양이의 생활환경</h2>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>요소</th>
+                                <th>목적</th>
+                                <th>주의 사항</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>안전한 은신처</td>
+                                <td>휴식, 잠자기, 스트레스 완화</td>
+                                <td>여러 개 위치, 어둡고 조용한 장소</td>
+                            </tr>
+                            <tr>
+                                <td>수직 공간</td>
+                                <td>운동, 오르내림, 전망 제공</td>
+                                <td>캣 트리, 선반, 장식장</td>
+                            </tr>
+                            <tr>
+                                <td>긁는 물건</td>
+                                <td>영토 표시, 발톱 가꾸기</td>
+                                <td>다양한 소재, 수직 및 수평</td>
+                            </tr>
+                            <tr>
+                                <td>장난감</td>
+                                <td>운동, 정신 자극, 지루함 완화</td>
+                                <td>교대식 놀이, 먹이 퍼즐</td>
+                            </tr>
+                            <tr>
+                                <td>음식과 물 그릇</td>
+                                <td>필수 영양 및 수분</td>
+                                <td>일관된 위치, 분리하여 배치</td>
+                            </tr>
+                            <tr>
+                                <td>화장실</td>
+                                <td>청결과 위생</td>
+                                <td>청결 유지, 뚜껑이 있는 골집</td>
+                            </tr>
+                            <tr>
+                                <td>창문 또는 고양이 관찰대</td>
+                                <td>야외 전망 제공, 지루함 완화</td>
+                                <td>안전을 위해 창문에 그물 추가</td>
+                            </tr>
+                            <tr>
+                                <td>브러싱</td>
+                                <td>피부 및 털 관리, 결합</td>
+                                <td>정기적이고 부드럽게 브러싱</td>
+                            </tr>
+                            <tr>
+                                <td>수의사 진찰</td>
+                                <td>건강 상태 모니터링, 예방 조치</td>
+                                <td>정기 검진 및 예방 접종</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                        <br><br>
+
+
+                        <h2>2. 고양이의 행동양식</h2>
+                        <h3>시각적 언어:</h3>
+                        <ul>
+                        <li><strong> - 꼬리 흔들기:</strong> "느슨하게 꼬리를 흔드는 고양이는 일반적으로 편안하고 만족하는 신호입니다." <span class="source">(ASPCA, 2023)</span></li>
+                        <li><strong> - 귀 자세:</strong> "고양이의 귀가 위로 서 있는 것은 경계심이나 두려움을 나타낼 수 있습니다." <span class="source">(Cornell University College of Veterinary Medicine, 2023)</span></li>
+                        <li><strong> - 동공 커짐:</strong> "고양이의 동공이 확장되면, 놀람, 흥분 또는 걱정을 나타낼 수 있습니다." <span class="source">(Humane Society of the United States, 2023)</span></li>
+                        </ul><br>
+                    
+                        <h3>음성적 언어:</h3>
+                        <ul>
+                        <li><strong> - 졸졸 흐르는 소리:</strong> "졸졸 흐르는 소리는 고양이가 기쁨, 애정 또는 배고픔을 표현하는 방법입니다." <span class="source">(International Cat Care, 2023)</span></li>
+                        <li><strong> - 울음소리:</strong> "고양이의 울음소리는 주의를 끄거나, 관심을 구하거나, 위협을 나타낼 수 있습니다." <span class="source">(PetMD, 2023)</span></li>
+                        <li><strong> - 으르렁 소리:</strong> "으르렁대는 소리는 고양이가 두려움, 공격성 또는 침략성을 표현하는 방법입니다." <span class="source">(American Veterinary Medical Association, 2023)</span></li>
+                        </ul><br>
+                    
+                        <h3>몸짓 언어:</h3>
+                        <ul>
+                        <li><strong> - 옹기종기:</strong> "옹기종기하는 고양이는 행복하고 편안한 표현입니다." <span class="source">(VCA Animal Hospitals, 2023)</span></li>
+                        <li><strong> - 등을 구부리기:</strong> "고양이가 등을 구부리는 것은 놀람이나 두려움을 나타낼 수 있습니다." <span class="source">(National Geographic, 2023)</span></li>
+                        <li><strong> - 꼬리를 꽂기:</strong> "꼬리를 꽂으면 고양이가 두려움이나 불안함을 느끼고 있음을 나타낼 수 있습니다." <span class="source">(Animal Planet, 2023)</span></li>
+                        </ul><br><br>
+
+                    
+                </div>
+            </div>
+            <div class="navigation">
+                <a href="#" class="nav-button disabled">이전 게시물</a>
+                <a href="cpost2.html" class="nav-button">다음 게시물</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

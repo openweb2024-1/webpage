@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>FURMILLY - 게시물</title>
+    <link rel="stylesheet" href="../home.css">
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        font-family: "Noto Sans KR", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-y: scroll;
+    }
+
+    #h {
+        font-family: "Noto Sans KR", sans-serif;
+        color: #AFD485;
+        text-shadow: 0 1.2px 1.5px rgba(0,0,0,0.4);
+    }
+
+    .container {
+        padding-bottom: 114vh;
+        background-image: url('back3.png'); /* 상대 경로로 배경 이미지 설정 */
+    }
+
+    .board {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #f4f7f6;
+        padding: 12vh 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 15px;
+        margin: 0 auto;
+    }
+
+    .post {
+        background-color: #fff;
+        padding: 2vh 3vh;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 85%;
+    }
+
+    .post-header {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1vh;
+        margin-bottom: 2vh;
+    }
+
+    .post-title {
+        font-size: 2em;
+        color: #333;
+    }
+
+    .post-meta {
+        font-size: 0.9em;
+        color: #777;
+    }
+
+    .post-content {
+        font-size: 1.0em;
+        color: #555;
+        line-height: 1.9;
+    }
+
+    .post-image {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .navigation {
+        margin-top: 3vh;
+        display: flex;
+        justify-content: space-between;
+        width: 28vh;
+    }
+
+    .nav-button {
+        background-color: #AFD485;
+        color: white;
+        padding: 1vh 2vh;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1em;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-button:hover {
+        background-color: rgb(131, 179, 130);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-button.disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="overlay"></div>
+        <header class="header">
+            <div class="logo">
+                <a href="../home.html"><img src="../logo.png" alt="logo"></a>
+            </div>
+        </header>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li id="li1"><a id="list1" href="../guide.html">초보집사 가이드</a>
+                        <ul class="sub-menu">
+                            <li id="uf1"><a href="../dguide.html">강아지 가이드</a></li>
+                            <li id="uf2"><a href="../cguide.html">고양이 가이드</a></li>
+                            <li id="uf3"><a href="../oguide.html">기타 동물 가이드</a></li>
+                        </ul>
+                    </li>
+                    <li id="li2"><a id="list2" href="../shophome.html">반려동물 생활용품</a>
+                        <ul class="sub-menu">
+                            <li id="uf4"><a href="../foodshop.html">사료</a></li>
+                            <li id="uf5"><a href="../toyshop.html">장난감</a></li>
+                            <li id="uf6"><a href="../shopelse.html">기타 생활 용품</a></li>
+                        </ul>
+                    </li>
+                    <li id="li3"><a id="list3" href="../care.html">반려동물 건강관리</a>
+                        <ul class="sub-menu">
+                            <li id="uf7"><a href="../deepcare.html">상세 관리</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="board">
+            <div class="post">
+                <div class="post-header">
+                    <h2 class="post-title">'앉아!' 가르치기</h2>
+                    <div class="post-meta">작성자: 관리자 | 작성일: 2024-06-15</div>
+                </div>
+                <img class="post-image" src="../image/dog1.png" alt="강아지 훈련">
+                <div class="post-content">
+                    <p>'앉아' 교육은 가장 기본적이고 중요한 훈련 중 하나입니다. 하지만 '앉아' 교육의 목적과 방법을 제대로 알고 있지 않은 상태에서 훈련을 하는 경우가 많습니다. 오늘은 강아지에게 '앉아' 교육을 효과적으로 진행하기 위한 방법에 대해서 알아보도록 하겠습니다.</p>
+                    <br>
+
+                    <h3>1. 강아지가 좋아하는 간식 준비</h3>
+                    <p>먼저 강아지들이 좋아할 만한 간식을 먹을 수 있는 크기로 작게 잘라 준비하는 것이 좋습니다.
+                    <br>훈련에는 늘 보상이 있어야 효과가 있기 때문입니다.</p>
+                    <br>
+
+                    <h3>2. 엉덩이가 땅에 닿는 순간 간식으로 보상</h3>
+                    <p>'앉아!'라고 먼저 말하기보다는 손에 있는 간식을 보여주면서 냄새를 맡게 하고<br>보호자에게 먼저 관심을 갖게 하도록 하는 것이 좋습니다.</p>
+                    <p>그러다가 엉덩이가 땅에 닿는 순간 간식으로 보상을 해주어야 합니다.<br>여기서 주의해야 할 점은 엉덩이가 땅에 닿았을 때 즉시 간식으로 보상을 해주어야 합니다. <br>즉시 보상을 해주어야만 강아지들도 '앉아야지만 간식을 먹을 수 있구나'라고 생각을 하기 때문입니다.</p>
+                    <p>이렇게 훈련을 반복하다 보면 어느 순간 강아지들은 자연스럽게 앉게 됩니다.<br>이제 앉는 게 익숙해졌다면 앉는 순간 '앉아!'라는 말과 함께 간식으로 보상을 해주게 된다면 앉아 교육의 훈련 효과는 더 좋아지게 됩니다.</p>
+                    <br>
+
+                    <h3>3. 자리를 이동하면서 진행</h3>
+                    <p>같은 장소에서 하기보다는 자리를 이동하면서 '앉아' 교육을 한다면 더 좋고 확실한 효과를 볼 수 있습니다. <br>뛰어가다가 멈추고도 훈련을 해보고, 빠른 걸음으로 이동하면서 교육을 진행한다면 강아지들도 더욱 쉽게 '앉아' 교육을 학습할 수 있습니다.</p>
+                    <br><br>
+
+                    
+                </div>
+            </div>
+            <div class="navigation">
+                <a href="#" class="nav-button disabled">이전 게시물</a>
+                <a href="dpost2.html" class="nav-button">다음 게시물</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
