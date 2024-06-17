@@ -12,8 +12,8 @@
 
     <script>
         // 평균 평점을 표시하는 함수
-        function displayAverageRating(i) {
-            const averageRating = localStorage.getItem(`averageRatingFood-${i}`);
+        function displayAverageRating(type, i) {
+            const averageRating = localStorage.getItem(`averageRating${type}-${i}`);
             if (averageRating) {
                 return parseFloat(averageRating);
             } else {
@@ -25,17 +25,17 @@
         function insertHtml(element, rank, rating) {
             element.innerHTML = `
                 <div class="rank"><h3>Rank ${rank}</h3></div>
-                <div class="rating">Average Rating: ${rating}</div>
+                <div class="rating">평점 평균: ${rating}</div>
             `;
         }
 
         // 페이지 로드 시 평균 평점 표시
-        window.onload = function() {
+        function loadRatings(type) {
             const ratings = [];
             
             // 각 요소에 대해 평균 평점을 가져옴
             for (let i = 1; i <= 5; i++) {
-                const rating = displayAverageRating(i);
+                const rating = displayAverageRating(type, i);
                 if (rating !== null) {
                     ratings.push({ id: i, rating: rating });
                 }
@@ -46,18 +46,24 @@
 
             // 정렬된 결과값을 각 요소에 표시
             ratings.forEach((item, index) => {
-                const element = document.getElementById(`averageRatingFood-${item.id}`);
+                const element = document.getElementById(`averageRating${type}-${item.id}`);
                 insertHtml(element, index + 1, item.rating);
             });
 
             // 평점이 없는 경우 처리
             for (let i = 1; i <= 5; i++) {
                 if (!ratings.some(item => item.id === i)) {
-                    const element = document.getElementById(`averageRatingFood-${i}`);
-                    element.innerHTML = 'No average rating available.';
+                    const element = document.getElementById(`averageRating${type}-${i}`);
+                    element.innerHTML = '<h3>No Rank</h3>등록된 리뷰가 없습니다.';
                 }
             }
         }
+
+        // 페이지 로드 시 각 유형별로 평점 표시
+        window.onload = function() {
+            ['Food', 'Toy', 'Else'].forEach(type => loadRatings(type));
+        }
+
     </script>
 
     <style>
@@ -175,41 +181,118 @@
                         <div id="averageRatingFood-1"></div>
                         <img src="review_img/food1.png" alt="제품 1">
                         <div class="product-review-element">
-                            <h3>제품 1</h3>
-                            <p>₩10,000</p>
+                            <h3>[고양이] 하림펫푸드 더리얼 캣 건식사료</h3>
+                            <p>₩ 30,000</p>
                             <button onclick="location.href='review_post/reviewfood-1.html'">Review 보기</button>
                         </div>
                     </div>
                     <div class="product-review">
                         <div id="averageRatingFood-2"></div>
                         <img src="review_img/food2.png" alt="제품 2">
-
                         <div class="product-review-element">
-                            <h3>제품 2</h3>
-                            <p>₩20,000</p>
-                            <button onclick="location.href='review_post/reviewfood-1.html'">Review 보기</button>
+                            <h3>[고양이] ANF 캔 간식 모음, 버라이어티 믹스</h3>
+                            <p>₩ 31,200</p>
+                            <button onclick="location.href='review_post/reviewfood-2.html'">Review 보기</button>
                         </div>
                     </div>
                     <div class="product-review">
-                        <img src="고양이 사료 예시 1.png" alt="제품 3">
-                        <h3>제품 3</h3>
                         <div id="averageRatingFood-3"></div>
-                        <p>₩30,000</p>
-                        <button>Review 보기</button>
+                        <img src="review_img/food3.png" alt="제품 3">
+                        <h3>[강아지] 페페로니 반려견간식 연어 + 소고기</h3>
+                        <p>₩12,000</p>
+                        <button onclick="location.href='review_post/reviewfood-3.html'">Review 보기</button>
                     </div>
                     <div class="product-review">
-                        <img src="고양이 사료 예시 1.png" alt="제품 4">
-                        <h3>제품 4</h3>
                         <div id="averageRatingFood-4"></div>
-                        <p>₩40,000</p>
-                        <button>Review 보기</button>
+                        <img src="review_img/food4.png" alt="제품 4">
+                        <h3>[강아지] ANF 전연령 독 식스프리 플러스 레드 건식사료</h3>
+                        <p>₩45,700</p>
+                        <button onclick="location.href='review_post/reviewfood-4.html'">Review 보기</button>
                     </div>
                     <div class="product-review">
-                        <img src="고양이 사료 예시 1.png" alt="제품 5">
-                        <h3>제품 5</h3>
                         <div id="averageRatingFood-5"></div>
-                        <p>₩50,000</p>
-                        <button>Review 보기</button>
+                        <img src="review_img/food5.png" alt="제품 5">
+                        <h3>[토끼] 제이펫 슈프림펫 러셀 래빗 테이스티믹스 토끼사료</h3>
+                        <p>₩14,900</p>
+                        <button onclick="location.href='review_post/reviewfood-5.html'">Review 보기</button>
+                    </div>
+                    <div class="product-review">  
+                        <div id="averageRatingToy-1"></div>
+                        <img src="review_img/toy1.png" alt="제품 1">
+                        <div class="product-review-element">
+                            <h3>[고양이] 딩동펫 고양이 테일 실리콘 낚시대</h3>
+                            <p>₩ 12,800</p>
+                            <button onclick="location.href='review_post/reviewtoy-1.html'">Review 보기</button>
+                        </div>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingToy-2"></div>
+                        <img src="review_img/toy2.png" alt="제품 2">
+                        <div class="product-review-element">
+                            <h3>[고양이] 낑깡스 고양이 장난감 총 양모볼 50개 사냥놀이</h3>
+                            <p>₩ 11,200</p>
+                            <button onclick="location.href='review_post/reviewtoy-2.html'">Review 보기</button>
+                        </div>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingToy-3"></div>
+                        <img src="review_img/toy3.png" alt="제품 3">
+                        <h3>[강아지] 리스펫 강아지 장난감 파스텔러버 로프 6종세트</h3>
+                        <p>₩ 9,990</p>
+                        <button onclick="location.href='review_post/reviewtoy-3.html'">Review 보기</button>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingToy-4"></div>
+                        <img src="review_img/toy4.png" alt="제품 4">
+                        <h3>[강아지] 강아지 셀프칫솔 삑삑이 장난감 18.6 x 6.1 cm</h3>
+                        <p>₩ 8,230</p>
+                        <button onclick="location.href='review_post/reviewtoy-4.html'">Review 보기</button>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingToy-5"></div>
+                        <img src="review_img/toy5.png" alt="제품 5">
+                        <h3>[햄스터] 아마존 햄스터 쳇바퀴 대, 혼합색상</h3>
+                        <p>₩ 4,060</p>
+                        <button onclick="location.href='review_post/reviewtoy-5.html'">Review 보기</button>
+                    </div>
+                    <div class="product-review">  
+                        <div id="averageRatingElse-1"></div>
+                        <img src="review_img/else1.png" alt="제품 1">
+                        <div class="product-review-element">
+                            <h3>[고양이] 네츄럴프로 하늘정원 큐티 캣타워</h3>
+                            <p>₩ 42,900</p>
+                            <button onclick="location.href='review_post/reviewelse-1.html'">Review 보기</button>
+                        </div>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingElse-2"></div>
+                        <img src="review_img/else2.png" alt="제품 2">
+                        <div class="product-review-element">
+                            <h3>[고양이] 메디펫 퓨리샌드 라이트 18kg 고양이 벤토나이트</h3>
+                            <p>₩ 19,900</p>
+                            <button onclick="location.href='review_post/reviewelse-2.html'">Review 보기</button>
+                        </div>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingElse-3"></div>
+                        <img src="review_img/else3.png" alt="제품 3">
+                        <h3>[강아지] 초코펫하우스 반려동물 에브리데이 하우스 3.0</h3>
+                        <p>₩ 41,410</p>
+                        <button onclick="location.href='review_post/reviewelse-3.html'">Review 보기</button>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingElse-4"></div>
+                        <img src="review_img/else4.png" alt="제품 4">
+                        <h3>[강아지] 페츠모아 냄새잡는 요술배변패드 프리미엄 엣지 SWG표준형 100매</h3>
+                        <p>₩ 43,500</p>
+                        <button onclick="location.href='review_post/reviewelse-4.html'">Review 보기</button>
+                    </div>
+                    <div class="product-review">
+                        <div id="averageRatingElse-5"></div>
+                        <img src="review_img/else5.png" alt="제품 5">
+                        <h3>[앵무새] 리프패럿 앵무새 안전 앵보장 중소형 600</h3>
+                        <p>₩ 37,000</p>
+                        <button onclick="location.href='review_post/reviewelse-5.html'">Review 보기</button>
                     </div>
                 </div>
             </div>
