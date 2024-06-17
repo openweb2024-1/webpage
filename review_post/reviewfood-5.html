@@ -21,11 +21,11 @@
             const reviewData = { product_name, email, rating, review };
             
             // 기존 리뷰 배열을 가져옴
-            let reviewfood_2 = JSON.parse(localStorage.getItem('reviewfood_2')) || [];
+            let reviewfood_5 = JSON.parse(localStorage.getItem('reviewfood_5')) || [];
             // 새로운 리뷰를 배열에 추가
-            reviewfood_2.push(reviewData);
+            reviewfood_5.push(reviewData);
             // 로컬 스토리지에 저장
-            localStorage.setItem('reviewfood_2', JSON.stringify(reviewfood_2));
+            localStorage.setItem('reviewfood_5', JSON.stringify(reviewfood_5));
 
             // 폼 제출 후 리뷰를 바로 보여주기
             showReviews();
@@ -35,10 +35,10 @@
 
         // 로컬 스토리지에서 모든 리뷰를 불러와 보여주는 함수
         function showReviews() {
-            const reviewfood_2 = JSON.parse(localStorage.getItem('reviewfood_2')) || [];
+            const reviewfood_5 = JSON.parse(localStorage.getItem('reviewfood_5')) || [];
             const savedReviewDiv = document.getElementById('savedReview');
             savedReviewDiv.innerHTML = '<h3>Reviews</h3>';
-            reviewfood_2.forEach((review, index) => {
+            reviewfood_5.forEach((review, index) => {
                 savedReviewDiv.innerHTML += `
                     <div class="review">
                         <p><strong>Name:</strong> ${review.product_name}</p>
@@ -50,7 +50,7 @@
                 `;
             });
             // 평균 평점 계산 및 표시
-            showAverageRating(reviewfood_2);
+            showAverageRating(reviewfood_5);
         }
 
         // 페이지 로드 시 저장된 리뷰 보여주기
@@ -58,10 +58,10 @@
             showReviews();
         };
         // 평균 평점을 계산하고 표시하는 함수
-        function showAverageRating(reviewfood_2) {
-            const totalReviews = reviewfood_2.length;
+        function showAverageRating(reviewfood_5) {
+            const totalReviews = reviewfood_5.length;
             if (totalReviews > 0) {
-                const totalRating = reviewfood_2.reduce((sum, review) => sum + parseFloat(review.rating), 0);
+                const totalRating = reviewfood_5.reduce((sum, review) => sum + parseFloat(review.rating), 0);
                 const averageRating = (totalRating / totalReviews).toFixed(2);
                 document.getElementById('averageRating').innerText = `평점 평균: ${averageRating}`;
                 // 평균 평점을 로컬 스토리지에 저장
@@ -75,7 +75,7 @@
 
         // 평균 평점을 로컬 스토리지에 저장하는 함수
         function saveAverageRating(averageRating) {
-            localStorage.setItem('averageRatingFood-2', averageRating);
+            localStorage.setItem('averageRatingFood-1', averageRating);
         }
     </script>
 
@@ -254,12 +254,12 @@
             <!--상품 설명----------------------------------->
             <div class="product-box">
                 
-                    <img src="../review_img/food2.png" alt="상품 이미지">
+                    <img src="../review_img/food5.png" alt="상품 이미지">
                     <div class="product-description">
                         <div id="averageRating"></div>
-                        <h2>[고양이] ANF 캔 간식 모음, 버라이어티 믹스, 95g 24개</h2>
-                        <p>가격: 31,200원</p>
-                        <p>ANF 고양이 캔 마성의 기호성! REAL 살코기, 부산물 ZERO는 기본 마성의 기호성을 자랑하는 ANF베스트 간식 캔</p>
+                        <h2>[토끼]제이펫 슈프림펫 러셀 래빗 테이스티믹스 토끼사료 907g</h2>
+                        <p>가격: 14,900원</p>
+                        <p>영양학적으로 우수하고 높은 기호도를 제공하는 프리미엄급 토끼사료, 풍부한 영양, 균형잡힌 식단 무설탕 레시피, 소화건강을 위한 높은 섬유소 ,천연 먹이본능 자극</p>
                 </div>
             </div>
             <!--리뷰------------------------->
