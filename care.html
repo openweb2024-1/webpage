@@ -39,6 +39,14 @@
         margin-right: 22px;
         display: none;
     }
+    .petprofile{
+        background-color: #ffffff;
+        border: 2px solid #afd485;
+        border-radius: 10px;
+        padding: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 </style>
 <body>
     <div class="pagesize"> <!--전체 페이지 사이즈 -->
@@ -49,7 +57,7 @@
         </div>
         <header class="header">
             <div class="logo">
-                <a href="home.html"><img src="logo.png" alt="logo"></a>
+                <a href="main.html"><img src="logo.png" alt="logo"></a>
             </div>
         </header>
         <div class="menu">
@@ -78,7 +86,7 @@
             </nav>
         </div>
         <br><br>
-        <div class = "basicviewforset"><!--기본정보 보이기(프로필, 이름설정, 키우는 동물 사진이랑 같이 개인정보 등록하기(나이 성별 등 선택지로 남겨두는 것들 생각해 둘 것 ))-->
+        <div class = "basicviewforset">
             <div class = "firstselection">
                 <p>Furmilly Profile</p>
                 <button id = "btnforaddpetlist">추가하기</button>
@@ -107,6 +115,8 @@
                 </div>
                 <label for id ="nameofpet" style="margin-left: 22pt;">이름 : </label>
                 <input type = "text" id ="nameofpet"><br>
+                <label for id ="breedofpet" style="margin-left: 22pt;">(선택)종: </label>
+                <input type = "text" id ="breedofpet"><br>
                 <label for id ="ageofpet" style="margin-left: 22pt;">(선택)나이 : </label>
                 <input type = "text" id ="ageofpet"><br>
                 <label for id ="birthofpet" style="margin-left: 22pt;">(선택)생일 : </label>
@@ -119,6 +129,7 @@
                 </select><br><br><br>
                 <button id = "realaddbtnforadpetlist" style = "margin-left: 22px;">프로필 추가하기</button>
             </div>
+            <div id = "petprofile"></div>
             <script>
                 function getImageLink() {
                     var input = document.getElementById("profileImage");
@@ -137,6 +148,98 @@
         
                     reader.readAsDataURL(file);
                 }
+
+                document.getElementById("realaddbtnforadpetlist").addEventListener("click",function(){
+                    var petname = document.getElementById("nameofpet").value;
+                    var petbreed = document.getElementById("breedofpet").value;
+                    var petage = document.getElementById("ageofpet").value;
+                    var petbirth = document.getElementById("birthofpet").value;
+                    var petsex = document.getElementById("sexofpet").value;
+                    var imageURL = document.getElementById("imagePreview").src;
+                    if (imageURL === "#"){
+                        alert("이미지를 선택해주세요.");
+                        return;
+                    }
+
+                    var newDiv = document.createElement("div");
+                    newDiv.classList.add("petprofile");
+                    
+                    var imgElement = document.createElement("img");
+                    imgElement.src = imageURL;
+                    imgElement.style.float = 'left';
+                    newDiv.appendChild(imgElement);
+
+                    var detailsDiv = document.createElement("div");
+                    imgElement.onload = function(){
+                        var forheight = imgElement.height;
+                        detailsDiv.style.height = forheight+'px';
+                        detailsDiv.classList.add("petdetails");
+                        detailsDiv.style.display = 'flex';
+                        detailsDiv.style.alignItems = 'center';
+                    }
+                    if (petname){
+                        var nameElement = document.createElement("p");
+                        nameElement.textContent  = "이름: " + petname;
+                        detailsDiv.appendChild(nameElement);
+                    }
+                    else {
+                        var nameElement = document.createElement("p");
+                        nameElement.innerHTML = "이름: " + "<br>";
+                        detailsDiv.appendChild(nameElement);
+                    }
+
+                    if (petbreed) {
+                        var breedElement = document.createElement("p");
+                        breedElement.textContent = "종: " + petbreed;
+                        detailsDiv.appendChild(breedElement);
+                    }
+                    else {
+                        var breedElement = document.createElement("p");
+                        breedElement.textContent = "종: ";
+                        detailsDiv.appendChild(breedElement);
+                    }
+
+                    if (petage) {
+                        var ageElement = document.createElement("p");
+                        ageElement.textContent = "나이: " + petage;
+                        detailsDiv.appendChild(ageElement);
+                    }
+                    else {
+                        var ageElement = document.createElement("p");
+                        ageElement.textContent = "나이: ";
+                        detailsDiv.appendChild(ageElement);
+                    }
+
+                    if (petbirth) {
+                        var birthElement = document.createElement("p");
+                        birthElement.textContent = "생일: " + petbirth;
+                        detailsDiv.appendChild(birthElement);
+                    }
+                    else {
+                        var birthElement = document.createElement("p");
+                        birthElement.textContent = "생일: ";
+                        detailsDiv.appendChild(birthElement);
+                    }
+
+                    var sexElement = document.createElement("p");
+                    sexElement.textContent = "성별: " + (petsex === "male" ? "남" : petsex === "female" ? "여" : "X");
+                    detailsDiv.appendChild(sexElement);
+
+                    newDiv.appendChild(detailsDiv);
+
+                    document.getElementById("petprofile").appendChild(newDiv);
+                    document.getElementById("petprofile")
+
+                    document.getElementById("nameofpet").value = "";
+                    document.getElementById("breedofpet").value = "";
+                    document.getElementById("ageofpet").value = "";
+                    document.getElementById("birthofpet").value = "";
+                    document.getElementById("sexofpet").value = "nose";
+                    document.getElementById("profileImage").value = "";
+                    document.getElementById("imagePreview").style.display = 'none';
+                    document.getElementById("adpetlist").style.display = 'none';
+                    document.getElementById("btnforaddpetlist").textContent = "추가하기";
+                });
             </script>
             <div class = "showyourpetlist">
             </div>

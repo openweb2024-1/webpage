@@ -19,6 +19,12 @@
             position: relative;
             height: 100%; /* 전체 높이 설정 */
         }
+        .basicviewforset{
+        background-color: #f4f7f6;
+        border: 2px solid #7CAE7A;
+        border-radius: 10px;
+        padding: 5px;
+    }
         #vaccine {
             border-collapse: collapse;
             table-layout: fixed;
@@ -33,7 +39,11 @@
         }
         #addVacPage{
             transition: max-height 0.3s ease-out;
-            
+            max-height: 0;
+            overflow: hidden;
+        }
+        #addVacPage.active {
+            max-height: 500px; /* 충분히 큰 값으로 설정 */
         }
     </style>
 </head>
@@ -46,7 +56,7 @@
         </div>
         <header class="header">
             <div class="logo">
-                <a href="home.html"><img src="logo.png" alt="logo"></a>
+                <a href="main.html"><img src="logo.png" alt="logo"></a>
             </div>
         </header>
         <div class="menu">
@@ -75,255 +85,215 @@
             </nav>
         </div>
         
-    <br><br><br><br>
-    <h2>접종 날짜 확인</h2>
-    <hr>
-    <div style="padding: 10pt; border:1px solid black">
-        <div>
-        <table id = "vaccine" style = "position : center;">        
-            <th width = 50px> </th>
-            <th> 1월</th>
-            <th> 2월</th>
-            <th> 3월</th>
-            <th> 4월</th>
-            <th> 5월</th>
-            <th> 6월</th>
-            <th> 7월</th>
-            <th> 8월</th>
-            <th> 9월</th>
-            <th> 10월</th>
-            <th> 11월</th>
-            <th> 12월</th>
-            <th>delete</th>
-            <th>modify</th>
-        </table>
-    </div><br>
-    <div id = "ptoclickAddVacPage" style="font-size : 14pt" onclick="clicToAddVac()">리스트 추가 (열기)</div> 
-    <div id = "addVacPage"style = "padding : 5pt; border : 1px solid black">
-        <label for="vacname"><b>주사 이름 </b> </label><br>
-        <input type="text" id="vacname"><br><br>
-        <label for="months">접종 달</label>
-        <div id="checkboxBox">
+    <br><br>
+    <div class = "basicviewforset">
+        <h2>접종 시기 관리</h2>
+        <hr>
+        <div style="padding: 10pt; border:1px solid black">
             <div>
-                <input type="checkbox" id="month1" value="1" onclick="monthschecks1()"><label for="month1">1월</label>
-                <div id="month1date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month2" value="1" onclick="monthschecks2()"><label for="month2">2월</label>
-                <div id="month2date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month3" value="1" onclick="monthschecks3()"><label for="month3">3월</label>
-                <divid id="month3date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </divid>
-            </div>
-            <div>
-                <input type="checkbox" id="month4" value="1" onclick="monthschecks4()"><label for="month4">4월</label>
-                <div id="month4date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month5" value="1" onclick="monthschecks5()"><label for="month5">5월</label>
-                <div id="month5date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month6" value="1" onclick="monthschecks6()"><label for="month6">6월</label>
-                <div id="month6date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month7" value="1" onclick="monthschecks7()"><label for="month7">7월</label>
-                <div id="month7date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month8" value="1" onclick="monthschecks8()"><label for="month6">8월</label>
-                <div id="month8date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month6" value="1" onclick="monthschecks9()"><label for="month9">9월</label>
-                <div id="month9date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month10" value="1" onclick="monthschecks10()"><label for="month10">10월</label>
-                <div id="month10date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month11" value="1" onclick="monthschecks11()"><label for="month11">11월</label>
-                <div id="month11date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
-            <div>
-                <input type="checkbox" id="month12" value="1" onclick="monthschecks12()"><label for="month12">12월</label>
-                <div id="month12date" style="display: none;">
-                    <label>(선택)날짜 입력</label><input type = "text">
-                </div>
-            </div>
+            <table id = "vaccine" style = "position : center;">        
+                <thead>
+                    <tr>
+                        <th width = 50px> </th>
+                        <th> 1월</th>
+                        <th> 2월</th>
+                        <th> 3월</th>
+                        <th> 4월</th>
+                        <th> 5월</th>
+                        <th> 6월</th>
+                        <th> 7월</th>
+                        <th> 8월</th>
+                        <th> 9월</th>
+                        <th> 10월</th>
+                        <th> 11월</th>
+                        <th> 12월</th>
+                        <th>delete</th>
+                        <th>modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div><br>
-        <button onclick="addvacs()">추가하기</button>
+        <div id = "ptoclickAddVacPage" style="font-size : 14pt; cursor: pointer;" onclick="clickToAddVac()">리스트 추가 (열기)</div> 
+        <div id = "addVacPage"style = "padding : 5pt; border : 1px solid black">
+            <label for="vacname"><b>주사 이름 </b> </label><br>
+            <input type="text" id="vacname"><br><br>
+            <label for="months">접종 달</label>
+            <div id="checkboxBox">
+                <div>
+                    <input type="checkbox" id="month1" value="1" onclick="monthschecks(1)"><label for="month1">1월</label>
+                    <div id="month1date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month2" value="2" onclick="monthschecks(2)"><label for="month2">2월</label>
+                    <div id="month2date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month3" value="3" onclick="monthschecks(3)"><label for="month3">3월</label>
+                    <div id="month3date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month4" value="4" onclick="monthschecks(4)"><label for="month4">4월</label>
+                    <div id="month4date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month5" value="5" onclick="monthschecks(5)"><label for="month5">5월</label>
+                    <div id="month5date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month6" value="6" onclick="monthschecks(6)"><label for="month6">6월</label>
+                    <div id="month6date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month7" value="7" onclick="monthschecks(7)"><label for="month7">7월</label>
+                    <div id="month7date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month8" value="8" onclick="monthschecks(8)"><label for="month8">8월</label>
+                    <div id="month8date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month9" value="9" onclick="monthschecks(9)"><label for="month9">9월</label>
+                    <div id="month9date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month10" value="10" onclick="monthschecks(10)"><label for="month10">10월</label>
+                    <div id="month10date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month11" value="11" onclick="monthschecks(11)"><label for="month11">11월</label>
+                    <div id="month11date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="month12" value="12" onclick="monthschecks(12)"><label for="month12">12월</label>
+                    <div id="month12date" style="display: none;">
+                        <label>(선택)날짜 입력</label><input type = "text">
+                    </div>
+                </div>
+            </div>
+            <button onclick="addRow()">추가</button>
+        </div>
+        <br>
+        <div>
+            <form method="post">
+                <input type="hidden" name="data" id="tableData">
+                <input type="submit" value="제출" onclick="submitForm()">
+            </form>
+        </div>
     </div>
-    </div>
+    <br><br>
+    <footer>
+        <p> &copy; FURMILLY. All Rights Reserved. </p>
+    </footer>
+</div> <!-- 전체 페이지 사이즈 닫기 -->
     <script>
-        //백신 추가 페이지 열고 닫기 설정
-        document.getElementById("ptoclickAddVacPage").addEventListener("click","clickToAddVac");
-
-        function clickToAddVac(){
-            var content = document.getElementById("addVacPage");
-            content.classList.toggle("active");
-            var clicktext = document.getElementById("ptoclickAddVacPage");
-            if (content.classList.contains("active")){
-                clicktext.textContent = "주사 추가 (닫기)";
-            } 
-            else{
-                clicktext.textContent = "주사 추가 (열기)";
+        function monthschecks(month) {
+            var dateInput = document.getElementById("month" + month + "date");
+            if (document.getElementById("month" + month).checked) {
+                dateInput.style.display = "block";
+            } else {
+                dateInput.style.display = "none";
+                dateInput.querySelector("input").value = ""; // 체크 해제 시 날짜 입력 초기화
             }
         }
 
-        //체크박스 눌렀을 때 날짜 추가 보이기
-        function monthschecks1(){
-            if (document.getElementById("month1").checked){
-                document.getElementById("month1date").style.display = 'block';
-            }
-            else {document.getElementById("month1date").style.display = 'none';}
-        }
-        function monthschecks2(){
-            if (document.getElementById("month2").checked){
-                document.getElementById("month2date").style.display = 'block';
-            }
-            else {document.getElementById("month2date").style.display = 'none';}
-        }
-        function monthschecks3(){
-            if (document.getElementById("month3").checked){
-                document.getElementById("month3date").style.display = 'block';
-            }
-            else {document.getElementById("month3date").style.display = 'none';}
-        }
-        function monthschecks4(){
-            if (document.getElementById("month4").checked){
-                document.getElementById("month4date").style.display = 'block';
-            }
-            else {document.getElementById("month4date").style.display = 'none';}
-        }
-        function monthschecks5(){
-            if (document.getElementById("month5").checked){
-                document.getElementById("month5date").style.display = 'block';
-            }
-            else {document.getElementById("month5date").style.display = 'none';}
-        }
-        function monthschecks6(){
-            if (document.getElementById("month6").checked){
-                document.getElementById("month6date").style.display = 'block';
-            }
-            else {document.getElementById("month6date").style.display = 'none';}
-        }
-        function monthschecks7(){
-            if (document.getElementById("month7").checked){
-                document.getElementById("month7date").style.display = 'block';
-            }
-            else {document.getElementById("month7date").style.display = 'none';}
-        }
-        function monthschecks8(){
-            if (document.getElementById("month8").checked){
-                document.getElementById("month8date").style.display = 'block';
-            }
-            else {document.getElementById("month8date").style.display = 'none';}
-        }
-        function monthschecks9(){
-            if (document.getElementById("month9").checked){
-                document.getElementById("month9date").style.display = 'block';
-            }
-            else {document.getElementById("month9date").style.display = 'none';}
-        }
-        function monthschecks10(){
-            if (document.getElementById("month10").checked){
-                document.getElementById("month10date").style.display = 'block';
-            }
-            else {document.getElementById("month10date").style.display = 'none';}
-        }
-        function monthschecks11(){
-            if (document.getElementById("month11").checked){
-                document.getElementById("month11date").style.display = 'block';
-            }
-            else {document.getElementById("month11date").style.display = 'none';}
-        }
-        function monthschecks12(){
-            if (document.getElementById("month12").checked){
-                document.getElementById("month12date").style.display = 'block';
-            }
-            else {document.getElementById("month12date").style.display = 'none';}
-        }
-        //추가하기 버튼 눌렀을 때 추가되는 과정
-        function addvacs(){
-            var vacName = document.getElementById("vacname").value;
-            var vacDate = document.getElementById("vacdate").value;//다른 식으로 날짜받자...
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-            var table = document.getElementById("vaccine");
-            var tbody = table.querySelector("tbody");
-            var newRow = tbody.insertRow();
-            
-            // 주사 이름 셀 추가
-            var nameCell = newRow.insertCell();
-            nameCell.textContent = vacName;
-            
-            // 각 월에 대한 셀 추가(notyet)
+        function addRow() {
+            var table = document.getElementById("vaccine").getElementsByTagName("tbody")[0];
+            var newRow = table.insertRow(table.rows.length);
+
+            var vacname = document.getElementById("vacname").value;
+            var nameCell = newRow.insertCell(0);
+            nameCell.textContent = vacname;
+
             for (var i = 1; i <= 12; i++) {
-                var cell = newRow.insertCell();
-                var isCheck = false;
+                var monthCheckbox = document.getElementById("month" + i);
+                var dateInput = document.getElementById("month" + i + "date").querySelector("input");
+                var cell = newRow.insertCell(i);
 
-                checkboxes.forEach(function(cb){
-                    if (cb.checked && cb.value == i){
-                        isCheck = true;
-                    }
-                });
-
-                if (vacDate !=''){
-                    cell.textContent = vacDate;
-                }
-                else{
-                    cell.textContent = isCheck ? "O" : "";
+                if (monthCheckbox.checked) {
+                    cell.textContent = dateInput.value ? dateInput.value : "O";
+                } else {
+                    cell.textContent = "";
                 }
             }
 
-            // 삭제 버튼 셀 추가
-            var deleteCell = newRow.insertCell();
+            // 삭제 버튼 추가
+            var deleteCell = newRow.insertCell(13);
             var deleteButton = document.createElement("button");
-            deleteButton.textContent = "-";
+            deleteButton.textContent = "삭제";
             deleteButton.onclick = function() {
-                tbody.removeChild(newRow);
+                table.deleteRow(newRow.rowIndex - 1);
             };
             deleteCell.appendChild(deleteButton);
-            
-            //수정 버튼 셀 추가(not yet)
-            var modifyCell = newRow.insertCell();
+
+            // 수정 버튼 추가
+            var modifyCell = newRow.insertCell(14);
             var modifyButton = document.createElement("button");
             modifyButton.textContent = "수정";
-            modifyButton.onclick = function(){};//***아직 작성 x. 누르면 항목들 수정 가능한 창 띄우기
+            modifyButton.onclick = function() {
+                modifyRow(newRow.rowIndex - 1);
+            };
             modifyCell.appendChild(modifyButton);
 
-            // 폼 초기화
+            // 입력 필드 초기화 및 페이지 닫기
             document.getElementById("vacname").value = "";
-            checkboxes.forEach(function(cb) {
-                cb.checked = false;
-            });
+            for (var i = 1; i <= 12; i++) {
+                var monthCheckbox = document.getElementById("month" + i);
+                var dateInput = document.getElementById("month" + i + "date").querySelector("input");
+                monthCheckbox.checked = false;
+                dateInput.value = "";
+                document.getElementById("month" + i + "date").style.display = "none";
+            }
+            document.getElementById("addVacPage").classList.remove("active");
+            document.getElementById("ptoclickAddVacPage").innerText = "리스트 추가 (열기)";
+        }
+
+        function clickToAddVac() {
+            var page = document.getElementById("addVacPage");
+            if (page.classList.contains("active")) {
+                page.classList.remove("active");
+                document.getElementById("ptoclickAddVacPage").innerText = "리스트 추가 (열기)";
+            } else {
+                page.classList.add("active");
+                document.getElementById("ptoclickAddVacPage").innerText = "리스트 추가 (닫기)";
+            }
+        }
+
+        function submitForm() {
+            var table = document.getElementById("vaccine");
+            var tableData = [];
+            for (var i = 1, row; row = table.rows[i]; i++) {
+                var rowData = [];
+                for (var j = 0, col; col = row.cells[j]; j++) {
+                    rowData.push(col.innerText);
+                }
+                tableData.push(rowData);
+            }
+            document.getElementById('tableData').value = JSON.stringify(tableData);
         }
     </script>
-    </div>
 </body>
 </html>
