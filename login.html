@@ -19,128 +19,178 @@
         </div>
         <header class="header">
             <div class="logo">
-                <a href="home.html"><img src="logo.png" alt="logo"></a>
+                <a href="main.html"><img src="logo.png" alt="logo"></a>
             </div>
         </header>
         <div class="menu">
             <nav class="clearfix">
                 <ul class="clearfix">
-                    <li id = "li1"><a id = "list1" href="guide.html">초보집사 가이드</a>
+                    <li id="li1"><a id="list1" href="guide.html">초보집사 가이드</a>
                         <ul class="sub-menu">
-                            <li id = "uf1"><a href="dguide.html">강아지 가이드</a></li>
-                            <li id = "uf2"><a href="cguide.html">고양이 가이드</a></li>
-                            <li id = "uf3"><a href="oguide.html">기타 동물 가이드</a></li>
+                            <li id="uf1"><a href="dguide.html">강아지 가이드</a></li>
+                            <li id="uf2"><a href="cguide.html">고양이 가이드</a></li>
+                            <li id="uf3"><a href="oguide.html">기타 동물 가이드</a></li>
                         </ul>
                     </li>
-                    <li id = "li2"><a id = "list2" href="shophome.html">반려동물 생활용품</a>
+                    <li id="li2"><a id="list2" href="shophome.html">반려동물 생활용품</a>
                         <ul class="sub-menu">
-                            <li id = "uf4"><a href="foodshop.html">사료</a></li>
-                            <li id = "uf5"><a href="toyshop.html">장난감</a></li>
-                            <li id = "uf6"><a href="shopelse.html">기타 생활 용품</a></li>
+                            <li id="uf4"><a href="foodshop.html">사료</a></li>
+                            <li id="uf5"><a href="toyshop.html">장난감</a></li>
+                            <li id="uf6"><a href="shopelse.html">기타 생활 용품</a></li>
                         </ul>
                     </li>
-                    <li id = "li3"><a id = "list3" href="care.html">반려동물 건강관리</a>
+                    <li id="li3"><a id="list3" href="care.html">반려동물 건강관리</a>
                         <ul class="sub-menu">
-                            <li id = "uf7"><a href="deepcare.html">상세 관리</a></li>
+                            <li id="uf7"><a href="deepcare.html">상세 관리</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
         <!--로그인 기능---------------------------------------------------------------->
-    <div class="login-box">
-        <div class="login">
-            <div class="form-group"> <!--아이디 입력-->
-                <label for="outlogin_mb_id" class="sr-only"><b>아이디<strong class="sr-only"> *</strong></b></label>						
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-user text-muted"></i></span>
+        <div class="login-box">
+            <div class="login">
+                <div class="form-group"> <!--아이디 입력-->
+                    <label for="outlogin_mb_id" class="form-label"><b>아이디<strong class="sr-only"> *</strong></b></label>						
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user text-muted"></i></span>
+                        </div>
+                        <input type="text" name="mb_id" id="outlogin_mb_id" class="form-control required" placeholder="아이디">
                     </div>
-                    <input type="text" name="mb_id" id="outlogin_mb_id" class="form-control required" placeholder="아이디">
                 </div>
-            </div>
-            <div class="form-group"><!--비밀번호 입력-->
-                <label for="outlogin_mb_password" class="sr-only"><b>비밀번호<strong class="sr-only"> *</b></strong></label>									
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-lock text-muted"></i></span>
+                <div class="form-group"><!--비밀번호 입력-->
+                    <label for="outlogin_mb_password" class="form-label"><b>비밀번호<strong class="sr-only"> *</b></strong></label>									
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-lock text-muted"></i></span>
+                        </div>
+                        <input type="password" name="mb_password" id="outlogin_mb_password" class="form-control required" placeholder="비밀번호">
                     </div>
-                    <input type="password" name="mb_password" id="outlogin_mb_password" class="form-control required" placeholder="비밀번호">
                 </div>
-            </div>
-            <div class="form-group"> <!--로그인 버튼-->
-                <button type="submit" class="btn btn-primary btn-block btn-lg en" onclick="login()">
-                    로그인
-                </button>    
+                <div class="form-group"> <!--로그인 버튼-->
+                    <button type="submit" class="btn btn-primary btn-block btn-lg en" onclick="login()">
+                        로그인
+                    </button>    
+                </div>
             </div>
         </div>
-    </div>
     <!--로그인 스타일-------------------------------------------------------------------------------------->
     <style>
+        body {
+            overflow-y: scroll;
+        }
+        .container {
+            background-image: url('back3.png');
+            padding-bottom: 20vh;
+        }
         .login-box {
-            font-family: 'Noto Sans', sans-serif;
-            background-color: #f4f7f6; /* 배경을 밝은 색으로 설정하여 #AFD485 색상과 대비 */
-            padding: 5vh 0; /* 패딩 증가 */
+            font-family: 'Noto Sans', sans-serif; /* Apply 'Noto Sans' font family to login box */
+            background-color: #f4f7f6;
+            padding: 0vh 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 80vh;
             border-radius: 15px;
         }
-
+    
         .login {
-            background-color: #ffffff; /* 로그인 박스 배경 */
-            padding: 50px; /* 패딩 증가 */
-            border-radius: 12px; /* 모서리 둥글게 */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 추가 */
-            width: 40%; /* 너비 증가 */
+            background-color: #ffffff;
+            padding: 100px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 40%;
             height: 30%;
+            font-family: 'Noto Sans', sans-serif; /* Apply 'Noto Sans' font family to login form */
+            margin-top: 0vh; /* 예시로 상단 간격을 조정 */
+        }
+
+        .form-label {
+            color: #777;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 7px;
+            margin-left: 7px;
         }
 
         .input-group-text {
-            background-color: #AFD485; /* 아이콘 배경 */
-            color: #ffffff; /* 아이콘 색상 */
-            border: none; /* 테두리 제거 */
-            font-size: 1.4rem; /* 아이콘 크기 증가 */
+            background-color: #AFD485;
+            color: #ffffff;
+            border: none;
+            font-size: 1.4rem;
+            font-family: 'Noto Sans', sans-serif; /* Apply 'Noto Sans' font family to input group text */
         }
-        .form-group{
+    
+        .form-group {
             justify-content: center;
-            font-size: larger;
+            font-size: 16px;
+            font-family: 'Noto Sans', sans-serif; /* Apply 'Noto Sans' font family to form group */
+            margin-bottom: 35px;
+            margin-top: -20px;
         }
+    
         .form-control {
-            border: 1px solid #AFD485; /* 입력 필드 테두리 색상 */
-            font-size: 1.3rem; /* 글씨 크기 증가 */
-            height: 50px; /* 입력창 높이 증가 */
-            width: 80%; /* 너비 증가 */
-            border-radius: 8px; /* 모서리 둥글게 */
-            margin: 10px;
+            border: 1.9px solid #AFD485;
+            font-size: 1.0rem;
+            height: 45px;
+            width: 100%;
+            border-radius: 10px;
+            align-items: center;
+            padding-left: 0px;
+            text-indent: 15px;
+            text-align: left;
+            font-family: 'Noto Sans', sans-serif; /* Apply 'Noto Sans' font family to form control */
         }
-
+    
         .form-control:focus {
-            border-color: #8cbf7b; /* 입력 필드 포커스 시 테두리 색상 변경 */
-            box-shadow: 0 0 0 0.25rem rgba(175, 212, 133, 0.25); /* 포커스 그림자 */
+            border-color: #8cbf7b;
+            
         }
-
+    
         .btn-primary {
-            background-color: #AFD485; /* 버튼 배경 색상 */
-            border: none; /* 버튼 테두리 제거 */
-            font-size: 1.4rem; /* 버튼 글씨 크기 증가 */
-            padding: 15px 0; /* 버튼 패딩 증가 */
-            margin-top: 20px; /* 상단 여백 증가 */
-            border-radius: 8px; /* 모서리 둥글게 */
-            width: 120px;
+            background-color: #AFD485;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-radius: 8px;
+            width: 535px;
+            font-family: 'Noto Sans', sans-serif; /* Apply 'Noto Sans' font family to primary button */
         }
-
+    
         .btn-primary:hover {
-            background-color: #9cb96e; /* 버튼 호버 시 색상 변경 */
+            background-color: #7CAE7A; /* 마우스를 올렸을 때 배경색을 어둡게 변경 */
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
-
+    
         .btn-primary:active {
-            background-color: #8cbf7b; /* 버튼 클릭 시 색상 변경 */
+            background-color: #8cbf7b;
+        }
+    
+        .btn-primary:focus {
+            
         }
 
-        .btn-primary:focus {
-            box-shadow: 0 0 0 0.25rem rgba(175, 212, 133, 0.25); /* 버튼 포커스 그림자 */
+        .linkusr {
+            float: right;
+            display: flex;
+            gap: 20px;
+            margin-right: 70px; /* 오른쪽 여백을 제거 */
+            margin-top: 20px; /* 오른쪽 여백을 제거 */
+        }
+
+        .linkusr a {
+            text-decoration: none;
+            color: #7cae7a;
+            font-family: "Noto Sans KR", sans-serif;
+            font-weight: bold;
+        }
+
+        .linkusr a:hover {
+            color: #badd78;
+            text-decoration: underline;
         }
     </style>
 
