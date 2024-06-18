@@ -113,15 +113,15 @@
                     <img id="imagePreview" src="#" alt="프로필 이미지" style="max-width: 300px; display: none;">
                     <p id="imageLink"></p>
                 </div>
-                <label for id ="nameofpet" style="margin-left: 22pt;">이름 : </label>
+                <label style="margin-left: 22pt;">이름 : </label>
                 <input type = "text" id ="nameofpet"><br>
-                <label for id ="breedofpet" style="margin-left: 22pt;">(선택)종: </label>
+                <label style="margin-left: 22pt;">(선택)종: </label>
                 <input type = "text" id ="breedofpet"><br>
-                <label for id ="ageofpet" style="margin-left: 22pt;">(선택)나이 : </label>
+                <label style="margin-left: 22pt;">(선택)나이 : </label>
                 <input type = "text" id ="ageofpet"><br>
-                <label for id ="birthofpet" style="margin-left: 22pt;">(선택)생일 : </label>
+                <label style="margin-left: 22pt;">(선택)생일 : </label>
                 <input type = "text" id ="birthofpet"><br>
-                <label for id ="sexofpet" style="margin-left: 22pt;">성별 : </label>
+                <label style="margin-left: 22pt;">성별 : </label>
                 <select id ="sexofpet">
                     <option value = "male"> 남 </option>
                     <option value = "female"> 여 </option>
@@ -156,7 +156,7 @@
                     var petbirth = document.getElementById("birthofpet").value;
                     var petsex = document.getElementById("sexofpet").value;
                     var imageURL = document.getElementById("imagePreview").src;
-                    if (imageURL === "#"){
+                    if (imageURL === "#" || !imageURL){
                         alert("이미지를 선택해주세요.");
                         return;
                     }
@@ -169,67 +169,47 @@
                     imgElement.style.float = 'left';
                     newDiv.appendChild(imgElement);
 
+
                     var detailsDiv = document.createElement("div");
                     imgElement.onload = function(){
                         var forheight = imgElement.height;
                         detailsDiv.style.height = forheight+'px';
                         detailsDiv.classList.add("petdetails");
-                        detailsDiv.style.display = 'flex';
                         detailsDiv.style.alignItems = 'center';
                     }
-                    if (petname){
-                        var nameElement = document.createElement("p");
-                        nameElement.textContent  = "이름: " + petname;
-                        detailsDiv.appendChild(nameElement);
-                    }
-                    else {
-                        var nameElement = document.createElement("p");
-                        nameElement.innerHTML = "이름: " + "<br>";
-                        detailsDiv.appendChild(nameElement);
-                    }
 
-                    if (petbreed) {
-                        var breedElement = document.createElement("p");
-                        breedElement.textContent = "종: " + petbreed;
-                        detailsDiv.appendChild(breedElement);
+                    var deleteElement = document.createElement("button");
+                    deleteElement.textContent = "삭제";
+                    deleteElement.style.float = 'right';
+                    deleteElement.onclick = function(){
+                        document.getElementById("petprofile").removeChild(newDiv);
                     }
-                    else {
-                        var breedElement = document.createElement("p");
-                        breedElement.textContent = "종: ";
-                        detailsDiv.appendChild(breedElement);
-                    }
+                    newDiv.appendChild(deleteElement);
 
-                    if (petage) {
-                        var ageElement = document.createElement("p");
-                        ageElement.textContent = "나이: " + petage;
-                        detailsDiv.appendChild(ageElement);
-                    }
-                    else {
-                        var ageElement = document.createElement("p");
-                        ageElement.textContent = "나이: ";
-                        detailsDiv.appendChild(ageElement);
-                    }
+                    var nameElement = document.createElement("p");
+                    nameElement.textContent = "이름: " + (petname ? petname : '');
+                    detailsDiv.appendChild(nameElement);
 
-                    if (petbirth) {
-                        var birthElement = document.createElement("p");
-                        birthElement.textContent = "생일: " + petbirth;
-                        detailsDiv.appendChild(birthElement);
-                    }
-                    else {
-                        var birthElement = document.createElement("p");
-                        birthElement.textContent = "생일: ";
-                        detailsDiv.appendChild(birthElement);
-                    }
+                    var breedElement = document.createElement("p");
+                    breedElement.textContent = "종: " + (petbreed? petbreed : '');
+                    detailsDiv.appendChild(breedElement);
+
+                    var ageElement = document.createElement("p");
+                    ageElement.textContent = "나이: " + (petage? petage : '');
+                    detailsDiv.appendChild(ageElement);
+
+                    var birthElement = document.createElement("p");
+                    birthElement.textContent = "생일: " + (petbirth? petbirth : '');
+                    detailsDiv.appendChild(birthElement);
 
                     var sexElement = document.createElement("p");
-                    sexElement.textContent = "성별: " + (petsex === "male" ? "남" : petsex === "female" ? "여" : "X");
+                    sexElement.textContent = "성별: " + (petsex == "male" ? "남" : petsex == "female" ? "여" : "X");
                     detailsDiv.appendChild(sexElement);
 
                     newDiv.appendChild(detailsDiv);
 
                     document.getElementById("petprofile").appendChild(newDiv);
-                    document.getElementById("petprofile")
-
+                
                     document.getElementById("nameofpet").value = "";
                     document.getElementById("breedofpet").value = "";
                     document.getElementById("ageofpet").value = "";
@@ -241,8 +221,6 @@
                     document.getElementById("btnforaddpetlist").textContent = "추가하기";
                 });
             </script>
-            <div class = "showyourpetlist">
-            </div>
         </div>
     </div>
 </body>
